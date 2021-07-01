@@ -1,0 +1,259 @@
+---
+
+# tasks file for install_ocp
+
+# this task will create an SSH key that is configured for password-less authentication
+- name: Creating an SSH key that is configured for password-less authentication on your machine
+  shell: ssh-keygen -t rsa -b 4096 -N '' -f ~/.ssh/id_rsa
+
+# Starting the ssh-agent process as a background task and Adding SSH private key to the ssh-agent
+- name: enable ssh-agent
+  shell: echo "ssh-agent = $(ssh-agent)"
+- name: enable ssh-agent
+  shell: eval $(ssh-agent);  ssh-add ~/.ssh/id_rsa
+  register: ssh_agent_status
+- debug:
+   var: ssh_agent_status
+
+# Creating a directory to store files required in the installation
+- name: Creating a directory to store temp files
+  ansible.builtin.file:
+    path: '{{ item }}'
+    state: directory
+    mode: 0755 # Please look into it I have changed it to 0755 from 0777
+  with_items:
+    - /OCP_files
+    - /OCP_installation_directory
+
+# Downloading binaries openshift-installer, kubectl and oc-client for OCP
+- name: Download openshit-install and oc-client binaries
+  get_url:
+    url: '{{ item }}'
+    dest: /OCP_files
+  with_items:
+    - https://mirror.openshift.com/pub/openshift-v4/clients/ocp/{{ ocp_version }}/openshift-client-linux.tar.gz
+    - https://mirror.openshift.com/pub/openshift-v4/clients/ocp/{{ ocp_version }}/openshift-install-linux.tar.gz
+
+# Extracting the files and moving binaries to the /usr/local/bin
+- name: Unarchiving the files
+  shell: cd /OCP_files; ls *.gz |xargs -n1 tar -xzf; mv kubectl oc openshift-install /usr/local/bin/
+
+# Executing openshift-install version command for testing
+- name: Executing openshift-install version command for testing
+  shell: openshift-install version
+  register: openshift_install_version_status
+- debug:
+   var: openshift_install_version_status
+
+# Cating ~/.ssh/id_rsa.pub file
+- name: cat ~/.ssh/id_rsa.pub
+  shell: cat ~/.ssh/id_rsa.pub
+  register: ssh_key_output
+- debug:
+   var: ssh_key_output
+
+# Creating install-config.yaml file
+- name: Creating install-config.yaml using Jinja2 template file
+  template:
+    src: install-config.j2
+    dest: /install-config.yaml
+
+# Inserting sshKey at the end of the install-config.yaml file.
+- name: Insert sshKey to the install-config.yaml file
+  lineinfile:
+    path: /install-config.yaml
+    line: "sshKey: '{{ ssh_key_output.stdout_lines[0] }}'"
+
+# Copying install-config.yaml to /OCP_installation_directory so that it would be easy to execute openshift-install command
+- name: Copying install-config.yaml to /OCP_installation_directory
+  ansible.builtin.copy:
+    src: /install-config.yaml
+    dest: /OCP_installation_directory
+    remote_src: yes
+
+# Creating the Kubernetes manifest and Ignition config files
+# openshift-install create manifests --dir=<installation_directory>
+- name: executing openshift-install create manifests command
+  shell: cd /OCP_installation_directory; openshift-install create manifests
+
+# Removing the Kubernetes manifest files that define the control plane machines and compute machineSets
+- name: Removing file
+  shell: rm -f /OCP_installation_directory/openshift/99_openshift-cluster-api_master-machines-*.yaml /OCP_installation_directory/openshift/99_openshift-cluster-api_worker-machineset-*.yaml
+- name: "Replace the true with mastersSchedulable true to mastersSchedulable false in /OCP_installation_directory/manifests/cluster-scheduler-02-config.yml"
+  ansible.builtin.replace:
+    path: /OCP_installation_directory/manifests/cluster-scheduler-02-config.yml
+    regexp: 'true'
+    replace: 'false'
+
+# Obtaining the Ignition config files
+- name: Obtain the Ignition config files
+  shell: cd /OCP_installation_directory; openshift-install create ignition-configs
+
+# Creating append-bootstrap.ign file for bootstrap machine
+- name: Creating append-bootstrap.ign using Jinja2 template file
+  template:
+    src: append-bootstrap.ign.j2
+    dest: /OCP_installation_directory/append-bootstrap.ign
+- name: Copying ignition files to the Apache server
+  ansible.builtin.copy:
+    src: '{{ item }}'
+    # src: /OCP_installation_directory/master.ign
+    dest: /var/www/html/
+    remote_src: yes
+    owner: apache
+    group: apache
+    mode: '0755'
+  with_items:
+    - /OCP_installation_directory/master.ign
+    - /OCP_installation_directory/worker.ign
+    - /OCP_installation_directory/bootstrap.ign
+    - /OCP_installation_directory/append-bootstrap.ign
+
+# Decode  master.ign into base64
+- name: Decode  master.ign into base64
+  shell: base64 -w0 /OCP_installation_directory/master.ign > /OCP_installation_directory/master.64
+
+# Decode worker.ign into base64
+- name: Decode  master.ign and worker.ign into base64
+  shell: base64 -w0 /OCP_installation_directory/worker.ign > /OCP_installation_directory/worker.64
+
+# Decode  append-bootstrap.ign and worker.ign into base64
+- name: Decode  append-bootstrap.ign into base64
+  shell: base64 -w0 /OCP_installation_directory/append-bootstrap.ign > /OCP_installation_directory/append-bootstrap.64
+
+- name: Cating master.64
+  shell: cat /OCP_installation_directory/master.64
+  register: master_base64_data
+
+- name: Cating worker.64
+  shell: cat /OCP_installation_directory/worker.64
+  register: worker_base64_data
+
+- name: Cating append-bootstrap.64
+  shell: cat /OCP_installation_directory/append-bootstrap.64
+  register: append_bootstrap_base64_data
+
+- name: Creating govc_commands.sh using Jinja2 template file
+  template:
+    src: govc_commands.j2
+    dest: /OCP_files/govc_commands.sh
+    mode: 0755
+
+# Installing govc command line tool
+- name: Install govc command line tool
+  get_url:
+    url: "https://github.com/vmware/govmomi/releases/download/v0.20.0/govc_linux_amd64.gz"
+    dest: /
+
+# Unarchive govc_linux_amd64.gz file that is downloaded in above task
+- name: Unarchive govc_linux_amd64.gz file
+  shell: gunzip /govc_linux_amd64.gz;
+
+# Renaming the  of govc_linux_amd64 to govc
+- name: renaming the govc
+  shell: mv /govc_linux_amd64 /govc
+
+# Changing ownership, group and permissions of govc
+- name: Changing ownership, group and permissions of govc
+  ansible.builtin.file:
+    path: /govc
+    owner: root
+    group: root
+    mode: '0744'
+
+#  Moving govc to /usr/local/bin
+- name: moving govc to /usr/local/bin
+  shell: mv /govc /usr/local/bin
+
+# Executing govc version command to test the installation of govc command line tool
+- name: govc version
+  shell: govc version
+  register: govc_tool_status
+- debug:
+    var: govc_tool_status.stdout
+
+# Executing govc commands for bootstrap, masters and workers VM's
+- name: Executing govc commands for bootstrap, masters and workers VM's
+  shell: /OCP_files/./govc_commands.sh
+  register: govc_commands_output
+- debug:
+    var: govc_commands_output.stdout_lines
+
+# Sleeping the playbook for 10 minutes so that bootstrap, worker and master Vm boots up properly"
+- name: "Sleeping the playbook for 20 minutes so that bootstrap, worker and master Vm boots up properly"
+  shell: sleep 20m
+- name: "checking Environment variables"
+  shell: echo $KUBECONFIG
+  register: KUBECONFIG_data
+- debug:
+    var: KUBECONFIG_data.stdout_lines
+
+# Executing oc whoami and oc get nodes commands
+- name: Executing oc whoami command
+  shell: oc whoami;  oc get nodes
+  register: oc_whoami_output
+- debug:
+    var: oc_whoami_output.stdout_lines
+
+# Copying approve_csr.sh to /OCP_files so that it would be easy to execute openshift-install command
+- name: Copying approve_csr.sh to /OCP_files
+  ansible.builtin.copy:
+    src: ../files/approve_csr.sh
+    dest: /OCP_files
+    mode: '777'
+
+# Approving newly generated certificate signing requests for machines using shell script
+- name: Approving the certificate signing requests for machines using shell script
+  shell: /OCP_files/./approve_csr.sh
+  register: csr_status
+- debug:
+     var: csr_status.stdout_lines
+
+# Executing oc get nodes commands cluster health check
+- name: Executing oc get nodes
+  shell: oc get nodes
+  register: oc_get_nodes_output
+- debug:
+    var: oc_get_nodes_output.stdout_lines
+
+# Creating pvc.yaml for image registry setup
+- name: Creating pvc.yaml using Jinja2 template file
+  template:
+    src: pvc_yaml.j2
+    dest: /OCP_files/pvc.yaml
+    mode: 0755
+
+# Executing oc create command for pvc creation
+- name: "Creating the PersistentVolumeClaim Object from /OCP_files/pvc.yaml file"
+  shell: oc create -f /OCP_files/pvc.yaml -n openshift-image-registry
+
+- name: "Sleeping the playbook for 30s so that pvc gets bound"
+  shell: sleep 30s
+
+# Getting PVC Status
+- name: "get pvc status"
+  shell: oc get pvc,pv -A
+  register: pvc_bound_status
+- debug:
+    var: pvc_bound_status.stdout_lines
+
+# Changing managementState to Managed in image registry
+- name: "Changing managementState to Managed"
+  shell: oc patch config.imageregistry.operator.openshift.io/cluster --type=merge -p '{"spec":{"managementState":"Managed","rolloutStrategy":"Recreate","replicas":1,"storage":{"managementState":"Managed","pvc":{"claim":"image-registry-storage"}}}}'
+
+- name: "Sleeping for 10m, getting components up and available"
+  shell: sleep 10m
+
+# Before executing this check All TRUE values for oc get co
+- name: "Executing openshift-install --dir=<installation_directory> wait-for install-complete command"
+  shell: cd /OCP_installation_directory; openshift-install wait-for install-complete;
+  register: final_status
+- debug:
+    var: final_status
+
+# # Writting 
+# - name: Executing oc get nodes
+#   local_action: 
+#     module: copy 
+#     content: "{{ final_status }}"
+#     dest: /OCP_files

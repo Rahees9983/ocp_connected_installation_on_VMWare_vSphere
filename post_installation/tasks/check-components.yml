@@ -1,0 +1,33 @@
+---
+# This task will check the Readiness of the OCP Components
+
+  - name: Get All Components
+    shell: oc get co | awk '{print $3}'
+    register: components
+
+  - debug:
+      var=components.stdout_lines
+
+  - name: Checking whether Components are Up and Running
+    when : components.stdout | regex_search('True')
+    debug:
+      msg: All Components are Up and Running .....
+  
+  - name:
+    fail:
+        msg: "Your Components are NOT Available, Kindly Check the Error ....."
+    when: '"False" in components.stdout'
+
+# # Before executing this check All TRUE values for oc get co
+#   - name: "Executing openshift-install --dir=<installation_directory> wait-for install-complete command"
+#     shell: cat /OCP_files/pvc.yaml 
+#     register: final_status
+#   - debug:
+#       var: final_status
+
+# # Writting 
+#   - name: Executing oc get nodes
+#     local_action: 
+#       module: copy 
+#       content: "{{ final_status }}"
+#       dest: /OCP_files/copied_pvc.yaml

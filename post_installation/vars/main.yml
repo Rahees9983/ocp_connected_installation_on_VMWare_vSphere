@@ -1,0 +1,6 @@
+---
+# vars file for roles/post_installation
+masters_ip_list:
+  - "10.136.56.31"
+  - "10.136.56.32"
+  - "10.136.56.33"

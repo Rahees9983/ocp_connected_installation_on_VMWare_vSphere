@@ -1,0 +1,1 @@
+vc_test_new_dns ansible_host=10.136.59.196 ansible_ssh_pass=gsLab!23 ansible_connection=ssh ansible_port=22 ansible_user=root ansible_become_pass=root

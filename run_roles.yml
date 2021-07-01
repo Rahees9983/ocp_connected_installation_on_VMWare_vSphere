@@ -1,0 +1,20 @@
+- hosts: vc_test_new_dns
+  become: true
+  become_user: root
+  roles:
+    - { role: dns_setup }
+    - { role: haproxy_setup }
+    - { role: apache_setup }
+
+- hosts: vc_test_new_dns
+  become: true
+  become_user: root
+  environment:
+    KUBECONFIG: "/OCP_installation_directory/auth/kubeconfig"
+    GOVC_URL: '10.0.88.201'
+    GOVC_USERNAME: 'Administrator@vclab.local'
+    GOVC_PASSWORD: 'gsL@B!234!Q'
+    GOVC_INSECURE: true
+  roles:
+    - { role: intsall_ocp }
+    - { role: post_installation }

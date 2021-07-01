@@ -1,0 +1,162 @@
+{% for k,v in govc_vars.items() %}
+{% for vm_name, vm_ip in v.items() %}
+{% with ignition_data="my value" %}
+{% if k =="bootstrap_details_in_vc"  %}
+{% set ignition_data = append_bootstrap_base64_data.stdout %}
+govc vm.change -e="guestinfo.ignition.config.data.encoding=base64" -vm='{{ vm_name }}'
+if [ $? -eq 0 ]
+then
+  echo "Successfully executed the govc command guestinfo.ignition.config.data.encoding=base64 for {{ vm_name }}"
+else
+  echo "govc command guestinfo.ignition.config.data.encoding=base64 for {{ vm_name }} FAILED" 
+  exit 1
+fi
+govc vm.change -e="disk.EnableUUID=TRUE" -vm='{{ vm_name }}'
+if [ $? -eq 0 ]
+then
+  echo "Successfully executed the govc command disk.EnableUUID=TRUE for {{ vm_name }}"
+else
+  echo "govc command disk.EnableUUID=TRUE for {{ vm_name }} FAILED" 
+  exit 1
+fi
+govc vm.change -e="guestinfo.ignition.config.data={{ ignition_data }}" -vm='{{ vm_name }}'
+if [ $? -eq 0 ]
+then
+  echo "Successfully executed the govc command guestinfo.ignition.config.data for {{ vm_name }}"
+else
+  echo "govc command guestinfo.ignition.config.data for {{ vm_name }} FAILED" 
+  exit 1
+fi
+export IPCFG="ip={{ vm_ip }}::{{ gateway_4_vms }}:{{ netmask_4_vms }}:bootstrap.{{ cluster_name_and_domain_name }}:{{ network_adapter_name }}:none nameserver={{ dns_ip_address }}"
+if [ $? -eq 0 ]
+then
+  echo "Successfully executed the export IPCFG command for {{ vm_name }}"
+else
+  echo "export IPCFG command for {{ vm_name }} FAILED" 
+  exit 1
+fi
+govc vm.change -vm "{{ vm_name }}" -e "guestinfo.afterburn.initrd.network-kargs=${IPCFG}"
+if [ $? -eq 0 ]
+then
+  echo "Successfully executed the govc command guestinfo.afterburn.initrd.network-kargs for {{ vm_name }}"
+else
+  echo "govc command guestinfo.afterburn.initrd.network-kargs for {{ vm_name }} FAILED" 
+  exit 1
+fi
+govc vm.power -on {{ vm_name }}
+if [ $? -eq 0 ]
+then
+  echo "Successfully powerd on  {{ vm_name }}"
+else
+  echo "FAILED to power on {{ vm_name }} FAILED" 
+  exit 1
+fi
+{% endif %}
+{% if k =="masters_details_in_vc"  %}
+{% set ignition_data = master_base64_data.stdout %}
+
+govc vm.change -e="guestinfo.ignition.config.data.encoding=base64" -vm='{{ vm_name }}'
+if [ $? -eq 0 ]
+then
+  echo "Successfully executed the govc command guestinfo.ignition.config.data.encoding=base64 for {{ vm_name }}"
+else
+  echo "govc command guestinfo.ignition.config.data.encoding=base64 for {{ vm_name }} FAILED" 
+  exit 1
+fi
+govc vm.change -e="disk.EnableUUID=TRUE" -vm='{{ vm_name }}'
+if [ $? -eq 0 ]
+then
+  echo "Successfully executed the govc command disk.EnableUUID=TRUE for {{ vm_name }}"
+else
+  echo "govc command disk.EnableUUID=TRUE for {{ vm_name }} FAILED" 
+  exit 1
+fi
+govc vm.change -e="guestinfo.ignition.config.data={{ ignition_data }}" -vm='{{ vm_name }}'
+if [ $? -eq 0 ]
+then
+  echo "Successfully executed the govc command guestinfo.ignition.config.data for {{ vm_name }}"
+else
+  echo "govc command guestinfo.ignition.config.data for {{ vm_name }} FAILED" 
+  exit 1
+fi
+export IPCFG="ip={{ vm_ip }}::{{ gateway_4_vms }}:{{ netmask_4_vms }}:master-{{ loop.index }}.{{ cluster_name_and_domain_name }}:{{ network_adapter_name }}:none nameserver={{ dns_ip_address }}"
+if [ $? -eq 0 ]
+then
+  echo "Successfully executed the export IPCFG command for {{ vm_name }}"
+else
+  echo "export IPCFG command for {{ vm_name }} FAILED" 
+  exit 1
+fi
+govc vm.change -vm "{{ vm_name }}" -e "guestinfo.afterburn.initrd.network-kargs=${IPCFG}"
+if [ $? -eq 0 ]
+then
+  echo "Successfully executed the govc command guestinfo.afterburn.initrd.network-kargs for {{ vm_name }}"
+else
+  echo "govc command guestinfo.afterburn.initrd.network-kargs for {{ vm_name }} FAILED" 
+  exit 1
+fi
+govc vm.power -on {{ vm_name }}
+if [ $? -eq 0 ]
+then
+  echo "Successfully powerd on  {{ vm_name }}"
+else
+  echo "FAILED to power on {{ vm_name }} FAILED" 
+  exit 1
+fi
+{% endif %}
+{% if k =="workers_details_in_vc"  %}
+{% set ignition_data = worker_base64_data.stdout %}
+
+govc vm.change -e="guestinfo.ignition.config.data.encoding=base64" -vm='{{ vm_name }}'
+if [ $? -eq 0 ]
+then
+  echo "Successfully executed the govc command guestinfo.ignition.config.data.encoding=base64 for {{ vm_name }}"
+else
+  echo "govc command guestinfo.ignition.config.data.encoding=base64 for {{ vm_name }} FAILED" 
+  exit 1
+fi
+govc vm.change -e="disk.EnableUUID=TRUE" -vm='{{ vm_name }}'
+if [ $? -eq 0 ]
+then
+  echo "Successfully executed the govc command disk.EnableUUID=TRUE for {{ vm_name }}"
+else
+  echo "govc command disk.EnableUUID=TRUE for {{ vm_name }} FAILED" 
+  exit 1
+fi
+govc vm.change -e="guestinfo.ignition.config.data={{ ignition_data }}" -vm='{{ vm_name }}'
+if [ $? -eq 0 ]
+then
+  echo "Successfully executed the govc command guestinfo.ignition.config.data for {{ vm_name }}"
+else
+  echo "govc command guestinfo.ignition.config.data for {{ vm_name }} FAILED" 
+  exit 1
+fi
+export IPCFG="ip={{ vm_ip }}::{{ gateway_4_vms }}:{{ netmask_4_vms }}:worker-{{ loop.index }}.{{ cluster_name_and_domain_name }}:{{ network_adapter_name }}:none nameserver={{ dns_ip_address }}"
+if [ $? -eq 0 ]
+then
+  echo "Successfully executed the export IPCFG command for {{ vm_name }}"
+else
+  echo "export IPCFG command for {{ vm_name }} FAILED" 
+  exit 1
+fi
+govc vm.change -vm "{{ vm_name }}" -e "guestinfo.afterburn.initrd.network-kargs=${IPCFG}"
+if [ $? -eq 0 ]
+then
+  echo "Successfully executed the govc command guestinfo.afterburn.initrd.network-kargs for {{ vm_name }}"
+else
+  echo "govc command guestinfo.afterburn.initrd.network-kargs for {{ vm_name }} FAILED"
+  exit 1
+fi
+govc vm.power -on {{ vm_name }}
+if [ $? -eq 0 ]
+then
+  echo "Successfully powerd on  {{ vm_name }}"
+else
+  echo "FAILED to power on {{ vm_name }} FAILED"
+  exit 1
+fi
+{% endif %}
+{% endwith %}
+{% endfor %} 
+{% endfor %}
+

@@ -1,0 +1,31 @@
+$TTL 1W
+@	IN	SOA	dns.{{ domain_name }}	root (
+			2019070700	; serial
+			3H		; refresh (3 hours)
+			30M		; retry (30 minutes)
+			2W		; expiry (2 weeks)
+			1W )		; minimum (1 week)
+@	IN	NS	dns.{{ domain_name }}
+@	IN	A	{{ dns_ip_address }}
+;
+dns		        IN	A	{{ dns_ip_address }}
+; The api identifies the IP of your load balancer.
+api.{{ cluster_name_and_domain_name }}	    	IN	A	{{ haproxy_ip_address }}
+api-int.{{ cluster_name_and_domain_name }}		IN	A	{{ haproxy_ip_address }}
+
+; Create an entry for the bootstrap host.
+bootstrap.{{ cluster_name_and_domain_name }}	IN	A	{{ bootstrap_ip_address }}
+; Create entries for the master hosts.
+{% for master_node in masters_ip_list %}
+master-{{ loop.index }}.{{ cluster_name_and_domain_name }}	IN	A	{{ master_node }}
+{% endfor %}
+; Create entries for the worker hosts.
+{% for worker_node in workers_ip_list %}
+worker-{{ loop.index }}.{{ cluster_name_and_domain_name }}	IN	A	{{ worker_node }}
+{% endfor %}
+_etcd-server-ssl._tcp  86400 IN    SRV 0        10     2380 etcd-0.{{ cluster_name_and_domain_name }}
+_etcd-server-ssl._tcp  86400 IN    SRV 0        10     2380 etcd-1.{{ cluster_name_and_domain_name }}
+_etcd-server-ssl._tcp  86400 IN    SRV 0        10     2380 etcd-2.{{ cluster_name_and_domain_name }}
+$ORIGIN apps.{{ cluster_name_and_domain_name }}
+*	 IN     A       {{ haproxy_ip_address }}
+;EOF

@@ -1,0 +1,25 @@
+---
+- name: "Moving Deployment file to the OCP_files"
+  ansible.builtin.copy:
+    src: ../files/deployment-ocp.yml
+    dest: /OCP_files
+    mode: '777'
+
+- name: "Cating Deployment file"
+  shell: cat /OCP_files/deployment-ocp.yml
+  register: deployment_file
+- debug:
+    var: deployment_file.stdout_lines
+
+- name: "Deploying Sample Flask Application with Service type as NodePort"
+  shell: oc apply -f /OCP_files/deployment-ocp.yml
+
+- name: "Sleeping for 2m for deployment to settle"
+  shell: sleep 2m
+
+- name: "Checking whether getting appropriate Output"
+  shell: curl '{{ masters_ip_list[0] }}':31325
+  register: response
+  failed_when: "'NodePort Deployment Working !!' not in response.stdout"
+- debug:
+    var: response.stdout_lines

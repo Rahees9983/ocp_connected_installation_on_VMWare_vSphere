@@ -1,0 +1,43 @@
+---
+# vars file for Intsall_OCP
+replicas: 3
+base_domain: ocp.local
+defaultDatastore: vSan-Cluster-1a
+ocp_version: "4.6.18"
+vcenter_ip: "10.0.88.201"
+vcenter_username: "Administrator@vclab.local"
+vcenter_password: 'gsL@B!234!Q'
+vcenter_datacenter: 'DC-1'
+vcenter_defaultDatastore: 'vSan-Cluster-1a'
+vcenter_folder: "/DC-1/vm/WorkSpace/Projects/Redhat/Test-OCP-Cluster"
+readhat_pull_secret: '{"auths":{"cloud.openshift.com":{"auth":"b3BlbnNoaWZ0LXJlbGVhc2UtZGV2K2dzbHBsXzEyMzQ1MXFka21qeHNobDY2dDg1ZjJwdDl4dmQ5dTV5OkRIOE4zSTZMUkVPWktNR1A0MFI1WlRYQ1paTFBKRU5KNEVVR0dXVjdTTTdBVFQ0QVVDS1RPQlgxQVdSSk9ENks=","email":"sysad@gslab.com"},"quay.io":{"auth":"b3BlbnNoaWZ0LXJlbGVhc2UtZGV2K2dzbHBsXzEyMzQ1MXFka21qeHNobDY2dDg1ZjJwdDl4dmQ5dTV5OkRIOE4zSTZMUkVPWktNR1A0MFI1WlRYQ1paTFBKRU5KNEVVR0dXVjdTTTdBVFQ0QVVDS1RPQlgxQVdSSk9ENks=","email":"sysad@gslab.com"},"registry.connect.redhat.com":{"auth":"NTI4MTQ2NTJ8dWhjLTFRZEtNanhTaGw2NnQ4NWYycFQ5eHZkOXU1WTpleUpoYkdjaU9pSlNVelV4TWlKOS5leUp6ZFdJaU9pSTJNak5rWkdFNFl6ZzVZemswTkdGbVlUTTJabVpsTTJFeFlUbGhORFJqTmlKOS54Q1paNC11SV9iZUhxY0hCZGVva0hRTVlwVmk3dmdMWndERWhDUFhzc1B0dzdyM1pabEhOclJLOS1XMWNjbmZQV1Z3RUgxRmxjekJTcHVxS2l5WHlnVWxncjE5UnpsZGpaRU5oNnR5N1BkU1hOTGx6N190M290Ylh2eXNLdWdPS05zdW9hQUFTbFNWMUpHNWtjeVY0YlQ3YVMxX2I3UHJrNV9nOF9YdG14Vm9pZEhBRFpObklVUjkyMTlSbUNJb2RuWHQ4b0liV0NkTTBqYVk4blc4a2l6cnJ5TTNzeXJVbnRCU0Voa1lWR2k0elVSWnNXT1ZkeG4weFlmbTBaYy1JNzFnWkxld2lJNW84ekN0ak44bjIzak1raUQtNjNHVHZ3Tk5jQVpYR2N4YkpKcVB1eGpid3ltU2dLN1VTN29PVEFqUzh3XzJYMGZjOTVscUVEOTRtTUlzWUpobHpiQVh1UXRuYVU0aEJndFBWUWZWemhhWXVZTTJqQTZfbDVNWDRid2FDamZXX0hQRkh4bGV4NTR2cjl6RVdoVDQ1N19zMDlYdjVFekxRWE9aeXB5VktfUHZkWEdXV1AzNFZMaHBGRnJmcGNfN09LWHhzRkpibnQ5dnBlTGRtbFNJZEsyVzlUWmtFOXdTT2N0RWhXNkFmWWlBaFViQWFBVzVaWHB4MWJmVzh0aTJVd2V4eTlzWEZGQ1pBT1FzUVAyRFJlZ1A4bEpMNHlVZGlRTTBRNTU3X001TXZPZ3BtR09MY3lQa0QwRFVyZHRiU0p5SnYwNE5iU2hWWU9xeXhpZzlEbGZWTGtyS283V1pwSHFWRzZiLVgxZU1qbGFzVDdUZzFJQzRGdmFMQXJEd1RNWGx0NVRSSmF6dC1La3ZmWFhIZndadEJrSHpUTWxuUm5nRQ==","email":"sysad@gslab.com"},"registry.redhat.io":{"auth":"NTI4MTQ2NTJ8dWhjLTFRZEtNanhTaGw2NnQ4NWYycFQ5eHZkOXU1WTpleUpoYkdjaU9pSlNVelV4TWlKOS5leUp6ZFdJaU9pSTJNak5rWkdFNFl6ZzVZemswTkdGbVlUTTJabVpsTTJFeFlUbGhORFJqTmlKOS54Q1paNC11SV9iZUhxY0hCZGVva0hRTVlwVmk3dmdMWndERWhDUFhzc1B0dzdyM1pabEhOclJLOS1XMWNjbmZQV1Z3RUgxRmxjekJTcHVxS2l5WHlnVWxncjE5UnpsZGpaRU5oNnR5N1BkU1hOTGx6N190M290Ylh2eXNLdWdPS05zdW9hQUFTbFNWMUpHNWtjeVY0YlQ3YVMxX2I3UHJrNV9nOF9YdG14Vm9pZEhBRFpObklVUjkyMTlSbUNJb2RuWHQ4b0liV0NkTTBqYVk4blc4a2l6cnJ5TTNzeXJVbnRCU0Voa1lWR2k0elVSWnNXT1ZkeG4weFlmbTBaYy1JNzFnWkxld2lJNW84ekN0ak44bjIzak1raUQtNjNHVHZ3Tk5jQVpYR2N4YkpKcVB1eGpid3ltU2dLN1VTN29PVEFqUzh3XzJYMGZjOTVscUVEOTRtTUlzWUpobHpiQVh1UXRuYVU0aEJndFBWUWZWemhhWXVZTTJqQTZfbDVNWDRid2FDamZXX0hQRkh4bGV4NTR2cjl6RVdoVDQ1N19zMDlYdjVFekxRWE9aeXB5VktfUHZkWEdXV1AzNFZMaHBGRnJmcGNfN09LWHhzRkpibnQ5dnBlTGRtbFNJZEsyVzlUWmtFOXdTT2N0RWhXNkFmWWlBaFViQWFBVzVaWHB4MWJmVzh0aTJVd2V4eTlzWEZGQ1pBT1FzUVAyRFJlZ1A4bEpMNHlVZGlRTTBRNTU3X001TXZPZ3BtR09MY3lQa0QwRFVyZHRiU0p5SnYwNE5iU2hWWU9xeXhpZzlEbGZWTGtyS283V1pwSHFWRzZiLVgxZU1qbGFzVDdUZzFJQzRGdmFMQXJEd1RNWGx0NVRSSmF6dC1La3ZmWFhIZndadEJrSHpUTWxuUm5nRQ==","email":"sysad@gslab.com"}}}'
+ocp_cluster_name: "gslab"
+dns_ip_address: "10.136.59.196"
+apache_port: "8081"
+
+#Use below variables to create govc commands for undefined number of masters and workers using for loop in Jinja2 
+##----------->>> <<<------------
+# cluster_name_and_domain_name: gslab.ocp.local. 
+cluster_name_and_domain_name: gslab.ocp.local
+govc_vars:
+   bootstrap_details_in_vc:
+    test-vc-ocp-bootstrap: "10.136.56.36"
+  
+   masters_details_in_vc:
+    test-vc-ocp-master-1: "10.136.56.31"
+    test-vc-ocp-master-2: "10.136.56.32"
+    test-vc-ocp-master-3: "10.136.56.33"
+
+   workers_details_in_vc:
+    test-vc-ocp-worker-1: "10.136.56.34"
+    test-vc-ocp-worker-2: "10.136.56.35"
+
+gateway_4_vms: 10.136.0.1
+netmask_4_vms: 255.255.255.0
+network_adapter_name: "ens192"
+
+DNS2_value: "10.136.1.10"
+DNS3_value: "10.185.255.222"
+GATEWAY_value: "10.136.0.1"
+NETMASK_value: "255.255.255.0"
+

@@ -1,0 +1,23 @@
+---
+# vars file for Haproxy-setup
+haproxy_listen_port: "9000"
+
+masters:
+   master-1.ocp.local: "10.136.56.31"
+   master-2.ocp.local: "10.136.56.32"
+   master-3.ocp.local: "10.136.56.33"
+
+workers:
+   worker-1.ocp.local: "10.136.56.34"
+   worker-2.ocp.local: "10.136.56.35"
+
+bootstrap:
+  bootstrap.ocp.local: "10.136.56.36"
+
+haproxy:
+  haproxy.ocp.local: "10.136.59.196"
+
+dns:
+  dns.ocp.local: "10.136.59.196"
+
+  

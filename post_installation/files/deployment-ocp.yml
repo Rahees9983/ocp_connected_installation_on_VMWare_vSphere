@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ocp-deployment-service
+  namespace: default
+  labels:
+    app: ocp-deployment
+spec:
+  type: NodePort
+  ports:
+    - nodePort: 31325
+      port: 5050
+      protocol: TCP
+      targetPort: 5050
+  selector:
+    app: ocp-deployment-container
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ocp-deployment
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: ocp-deployment-container
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ocp-deployment-container
+    spec:
+      containers:
+      - name: ocp-deployment
+        image: r4rajat/test-ocp-deployment
+        stdin: true
+        tty: true
+        ports:
+          - containerPort: 5050

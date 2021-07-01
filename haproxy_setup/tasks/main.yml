@@ -1,0 +1,97 @@
+---
+# tasks file for Haproxy-setup
+
+# This task will create populate data for named.conf file and store it into populated_haproxy.cnf
+- name: Creating named.conf using Jinja2 template file
+  template:
+    src: default_haproxy_cnf.j2
+    dest: /populated_named.conf
+
+# Installing haproxy 
+- name: Install haproxy packages
+  yum:
+    name: '{{ item }}'
+    state: present
+    update_cache: True
+  with_items:
+    - haproxy
+
+# Enabling haproxy service
+- name: Enable service haproxy service
+  ansible.builtin.service:
+    name: haproxy
+    enabled: yes
+
+# Adding http and https service to firewall public zone 
+- name: adding haproxy service to Public zone --> firewall-cmd  --add-service=http --zone=public  --permanent
+  ansible.posix.firewalld:
+      zone: public
+      service: '{{ item }}'
+      permanent: yes
+      state: enabled
+  with_items:
+    - http
+    - https 
+
+# Allowing ports to permit traffic in default zone 
+- name: permit traffic in default zone on ports
+  ansible.posix.firewalld:
+    port: '{{ item }}'
+    permanent: yes
+    state: enabled
+  with_items:
+    - '{{ haproxy_listen_port }}/tcp'
+    - 6443/tcp
+    - 22623/tcp
+
+# Reloading the firewalld service 
+- name: reload service firewalld
+  systemd:
+    name: firewalld
+    state: reloaded
+
+# Restarting haproxy service 
+- name: Restart Haproxy service (haproxy) service 
+  ansible.builtin.service:
+    name: haproxy
+    state: restarted
+  register: haproxy_service_status
+
+# Showing the status of haproxy service 
+- debug:
+    var: haproxy_service_status
+
+# Creating backup of the default named.conf file
+- name: Creating backup of original file of haproxy.cnf 
+  ansible.builtin.copy:
+    src: /etc/haproxy/haproxy.cfg
+    dest: /etc/haproxy/haproxy.cfg.my_backup
+    remote_src: yes
+
+# Copying populated_named.conf file content to haproxy.conf 
+- name: Copying populated_named.conf file content to haproxy.conf 
+  ansible.builtin.copy:
+    src: /populated_named.conf
+    dest: /etc/haproxy/haproxy.cfg
+    remote_src: yes
+
+# Executing setsebool for Haproxy 
+- name: Executing a command to fix haproxy service failed error
+  shell: setsebool -P haproxy_connect_any=1
+
+# Restarting haproxy service
+- name: Restart Haproxy service (haproxy) service 
+  ansible.builtin.service:
+    name: haproxy
+    state: restarted
+  register: haproxy_service_status
+
+# Removing populated_named.conf file from the machine
+- name: Removing populated_named.conf from the target machine
+  shell: rm /populated_named.conf
+
+# Showing the status of haproxy service   
+- debug:
+    var: haproxy_service_status
+
+

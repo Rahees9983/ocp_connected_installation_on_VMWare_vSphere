@@ -1,0 +1,79 @@
+#Calling all roles for OCP connected installation 
+- name: Executing OCP Installation roles 
+  hosts: vc_test_new_dns
+  become: true
+  become_user: root
+  environment:
+    KUBECONFIG: "/OCP_installation_directory/auth/kubeconfig"
+    GOVC_URL: '10.0.88.201'
+    GOVC_USERNAME: 'Administrator@vclab.local'
+    GOVC_PASSWORD: 'gsL@B!234!Q'
+    GOVC_INSECURE: true
+  roles:
+    - { role: install_ocp }
+
+- hosts: vc_test_new_dns
+  become: true
+  become_user: root
+  environment:
+    KUBECONFIG: "/OCP_installation_directory/auth/kubeconfig"
+  gather_facts: no
+  roles:
+    - { role: post_installation }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Calling apache_setup and dns_setup roles on DNS machine
+- name: Executing DNS server setup role
+  hosts: vc_test_new_dns
+  become: true
+  roles:
+    - { role: dns_setup }
+    - { role: apache_setup }
+
+# Calling haproxy_setup roles on Haproxy machine
+- name: Executing Haproxy server setup role
+  hosts: vc_test_new_haproxy
+  become: true
+  roles:
+    - { role: haproxy_setup }
+
+# Calling intsall_ocp role
+- name: Calling intsall_ocp role 
+  hosts: vc_test_new_dns
+  become: true
+  become_user: root
+  gather_facts: no
+  environment:
+    KUBECONFIG: "/OCP_installation_directory/auth/kubeconfig"
+  roles:
+    - { role: intsall_ocp }

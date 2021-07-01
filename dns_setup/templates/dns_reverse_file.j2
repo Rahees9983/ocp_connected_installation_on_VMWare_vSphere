@@ -1,0 +1,27 @@
+$TTL 1W
+@	IN	SOA	dns.{{ domain_name }}	root (
+			2019070700	; serial
+			3H		; refresh (3 hours)
+			30M		; retry (30 minutes)
+			2W		; expiry (2 weeks)
+			1W )		; minimum (1 week)
+	IN	NS	dns.{{ domain_name }}
+;
+; The syntax is "last octet" and the host must have an FQDN
+; with a trailing dot.
+
+{% for master_ip in masters_ip_list %}
+{{ master_ip[master_ip.rfind(".")+1:] }}	IN	PTR	master-{{ loop.index }}.{{ cluster_name_and_domain_name }}
+{% endfor %}
+
+{% for worker_ip in workers_ip_list %}
+{{ worker_ip[worker_ip.rfind(".")+1:] }}	IN	PTR	worker-{{ loop.index }}.{{ cluster_name_and_domain_name }}
+{% endfor %}
+
+{{ haproxy_ip_address[haproxy_ip_address.rfind(".")+1:] }}	IN	PTR api.{{ cluster_name_and_domain_name }}
+{{ haproxy_ip_address[haproxy_ip_address.rfind(".")+1:] }}	IN	PTR api-int.{{ cluster_name_and_domain_name }}
+
+{{ bootstrap_ip_address[bootstrap_ip_address.rfind(".")+1:] }}	IN	PTR bootstrap.{{ cluster_name_and_domain_name }}
+{{ dns_ip_address[dns_ip_address.rfind(".")+1:] }} IN	PTR dns.{{ cluster_name_and_domain_name }}
+;	
+;EOF

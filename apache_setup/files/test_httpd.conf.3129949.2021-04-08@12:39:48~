@@ -1,0 +1,13 @@
+
+ServerRoot "/etc/httpd"
+#
+# Listen 9999: Allows you to bind Apache to specific IP addresses and/or
+#
+#Listen 999912.34.56.78:80
+Listen 99998081
+Look here Rahees for the changes you had made using replace module
+#
+ServerAdmin root@localhost
+# server_tokens: I am added comment in front of the this and will remove it using ansible modules
+# ServerName gives the name and port that the server uses to identify itself.
+#ServerName www.example.com:80

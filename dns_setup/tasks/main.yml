@@ -1,0 +1,157 @@
+# This task will change the hostname of the machine
+- name: Set a hostname
+  ansible.builtin.hostname:
+    # name: dns.ocp.local
+    name: '{{ set_dns_hostname }}'
+
+# This task will append the your DNS server IP to your network-script
+- name: add lines
+  lineinfile: 
+    path: /etc/sysconfig/network-scripts/ifcfg-{{ network_adapter_name }}
+    line: '{{ item }}'
+  with_items:
+    - IPADDR="{{ dns_ip_address }}"
+    - GATEWAY="{{ GATEWAY_value }}"
+    - NETMASK="{{ NETMASK_value }}"
+    - PEERDNS=no
+    - DNS1="{{ dns_ip_address }}"
+    - DNS2="{{ DNS2_value }}"
+    - DNS3="{{ DNS3_value }}"
+
+- name: "Replace the dhcp to none /etc/sysconfig/network-scripts/ifcfg-ens192"
+  ansible.builtin.replace:
+    path: /etc/sysconfig/network-scripts/ifcfg-{{ network_adapter_name }}
+    regexp: 'dhcp'
+    replace: 'none'
+
+# This task will restart the NetworkManager service so that changes made in network-script get reflacted
+- name: Restarting Netwotk service
+  ansible.builtin.service:
+    name: NetworkManager
+    state: restarted
+
+# This task will install the package required for the DNS server 
+- name: Install all the packages
+  yum:
+    # name: '{{ item }}'
+    name: ['python3', 'httpd', 'bind', 'jq', 'bind-utils']
+    state: present
+    update_cache: True
+
+# This task will enable the named service 
+- name: Enable service httpd, and not touch the state
+  ansible.builtin.service:
+    name: named
+    enabled: yes
+
+# This task will restart the named service
+- name: Restart DNS service (named) service for interface eth0
+  ansible.builtin.service:
+    name: named
+    state: restarted
+
+# Beow This task will check the current status of the named service 
+- name: Checking the status of the named service
+  shell: systemctl status named
+  register: named_service_status
+
+# This task will show the status of named service 
+- debug:
+    var: named_service_status
+
+# This task will create new_named_conf file which is populated with new data passed in variables 
+- name: Creating named.conf using Jinja2 template file
+  template:
+    src: default_named_conf_file.j2
+    dest: /new_named_conf 
+
+#This task will replace default /etc/named/named.conf file with the new configuration that we had created 
+#using Jinja template
+- name: Copying my_named.conf file to /etc/named/named.conf file 
+  ansible.builtin.copy:
+    src: /new_named_conf
+    dest: /etc/named.conf
+    remote_src: yes
+
+# This task will populate data for forward name resolution in populated_dns_reverse_file
+- name: Creating populated_dns_forward_file using Jinja2 template file
+  template:
+    src: dns_forward_file.j2
+    dest: /populated_dns_forward_file
+
+# Copying populated_dns_foreword_file to /etc/named folder
+- name: Copying dns_forward_file to /etc/named
+  ansible.builtin.copy:
+    src: /populated_dns_forward_file
+    dest: /var/named
+    owner: root
+    group: named
+    remote_src: yes
+  
+# Removing  populated_dns_forward_file file from the machine
+- name: Removing populated_dns_forward_file from the target machine
+  shell: rm /populated_dns_forward_file
+
+# Populating data for reverse name resolution in populated_dns_reverse_file
+- name: Creating populated_dns_reverse_file using Jinja2 template file
+  template:
+    src: dns_reverse_file.j2
+    dest: /populated_dns_reverse_file
+
+# Copying populated_dns_reverse_file to /etc/named folder
+- name: Copying populated_dns_reverse_file to /var/named/
+  ansible.builtin.copy:
+    src: /populated_dns_reverse_file
+    dest: /var/named
+    owner: root
+    group: named
+    remote_src: yes
+
+# Removing  populated_dns_reverse_file file from the machine
+- name: Removing populated_dns_reverse_file from the target machine
+  shell: rm /populated_dns_reverse_file
+
+#Restarting named service 
+- name: Restart DNS service (named) service 
+  ansible.builtin.service:
+    name: named
+    state: restarted
+
+# Inserting nameserver in /etc/resolv.conf file 
+- name: Inserting our namserver for DNS server in /etc/resolv.conf
+  ansible.builtin.lineinfile:
+    path: /etc/resolv.conf
+    insertafter: 'search'
+    line: 'nameserver {{ dns_ip_address }}'
+
+# Adding dns service to public zone 
+- name: adding dns service to Public zone --> firewall-cmd  --add-service=dns --zone=public  --permanent
+  ansible.posix.firewalld:
+      zone: public
+      service: dns
+      permanent: yes
+      state: enabled
+
+# Permit traffic in default zone on port 53/udp
+- name: permit traffic in default zone on port 53/udp
+  ansible.posix.firewalld:
+    port: 53/udp
+    permanent: yes
+    state: enabled
+
+# Permit traffic in default zone on port 53/tcp
+- name: permit traffic in default zone on port 53/tcp
+  ansible.posix.firewalld:
+    port: 53/tcp
+    permanent: yes
+    state: enabled
+
+# This task will execute a dig command 
+- name: Checking DNS server using dig command
+  shell: dig +short -x {{ haproxy_ip_address }}
+  register: dig_command_result
+
+# Showing result of the dig command 
+- debug: 
+    var: dig_command_result
+

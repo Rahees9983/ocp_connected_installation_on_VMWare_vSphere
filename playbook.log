@@ -1,0 +1,949 @@
+2021-06-30 07:43:29,218 p=93748 u=gslab n=ansible | PLAY [vc_test_new_dns] ****************************************************************************************************
+2021-06-30 07:43:29,241 p=93748 u=gslab n=ansible | TASK [Gathering Facts] ****************************************************************************************************
+2021-06-30 07:43:44,778 p=93748 u=gslab n=ansible | ok: [vc_test_new_dns]
+2021-06-30 07:43:44,789 p=93748 u=gslab n=ansible | TASK [dns_setup : Set a hostname] *****************************************************************************************
+2021-06-30 07:43:52,125 p=93748 u=gslab n=ansible | ok: [vc_test_new_dns]
+2021-06-30 07:43:52,145 p=93748 u=gslab n=ansible | TASK [dns_setup : add lines] **********************************************************************************************
+2021-06-30 07:43:57,978 p=93748 u=gslab n=ansible | ok: [vc_test_new_dns] => (item=IPADDR="10.136.59.196")
+2021-06-30 07:44:06,452 p=93748 u=gslab n=ansible | ok: [vc_test_new_dns] => (item=GATEWAY="10.136.0.1")
+2021-06-30 07:44:12,179 p=93748 u=gslab n=ansible | ok: [vc_test_new_dns] => (item=NETMASK="255.255.255.0")
+2021-06-30 07:44:18,078 p=93748 u=gslab n=ansible | ok: [vc_test_new_dns] => (item=PEERDNS=no)
+2021-06-30 07:44:23,595 p=93748 u=gslab n=ansible | ok: [vc_test_new_dns] => (item=DNS1="10.136.59.196")
+2021-06-30 07:44:30,788 p=93748 u=gslab n=ansible | ok: [vc_test_new_dns] => (item=DNS2="10.136.1.10")
+2021-06-30 07:44:37,490 p=93748 u=gslab n=ansible | ok: [vc_test_new_dns] => (item=DNS3="10.185.255.222")
+2021-06-30 07:44:37,539 p=93748 u=gslab n=ansible | TASK [dns_setup : Replace the dhcp to none /etc/sysconfig/network-scripts/ifcfg-ens192] ***********************************
+2021-06-30 07:44:40,959 p=93748 u=gslab n=ansible |  [ERROR]: User interrupted execution
+
+2021-06-30 07:56:17,397 p=99523 u=gslab n=ansible | PLAY [vc_test_new_dns] ****************************************************************************************************
+2021-06-30 07:56:17,424 p=99523 u=gslab n=ansible | TASK [Gathering Facts] ****************************************************************************************************
+2021-06-30 07:56:32,797 p=99523 u=gslab n=ansible | ok: [vc_test_new_dns]
+2021-06-30 07:56:32,805 p=99523 u=gslab n=ansible | TASK [dns_setup : Set a hostname] *****************************************************************************************
+2021-06-30 07:56:44,847 p=99523 u=gslab n=ansible | ok: [vc_test_new_dns]
+2021-06-30 07:56:44,855 p=99523 u=gslab n=ansible | TASK [dns_setup : add lines] **********************************************************************************************
+2021-06-30 07:56:55,178 p=99523 u=gslab n=ansible | ok: [vc_test_new_dns] => (item=IPADDR="10.136.59.196")
+2021-06-30 07:57:02,200 p=99523 u=gslab n=ansible | ok: [vc_test_new_dns] => (item=GATEWAY="10.136.0.1")
+2021-06-30 07:57:07,783 p=99523 u=gslab n=ansible | ok: [vc_test_new_dns] => (item=NETMASK="255.255.255.0")
+2021-06-30 07:57:13,619 p=99523 u=gslab n=ansible | ok: [vc_test_new_dns] => (item=PEERDNS=no)
+2021-06-30 07:57:22,790 p=99523 u=gslab n=ansible | ok: [vc_test_new_dns] => (item=DNS1="10.136.59.196")
+2021-06-30 07:57:29,125 p=99523 u=gslab n=ansible | ok: [vc_test_new_dns] => (item=DNS2="10.136.1.10")
+2021-06-30 07:57:36,698 p=99523 u=gslab n=ansible | ok: [vc_test_new_dns] => (item=DNS3="10.185.255.222")
+2021-06-30 07:57:36,744 p=99523 u=gslab n=ansible | TASK [dns_setup : Replace the dhcp to none /etc/sysconfig/network-scripts/ifcfg-ens192] ***********************************
+2021-06-30 07:57:42,797 p=99523 u=gslab n=ansible | ok: [vc_test_new_dns]
+2021-06-30 07:57:42,822 p=99523 u=gslab n=ansible | TASK [dns_setup : Restarting Netwotk service] *****************************************************************************
+2021-06-30 07:57:50,091 p=99523 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 07:57:50,101 p=99523 u=gslab n=ansible | TASK [dns_setup : Install all the packages] *******************************************************************************
+2021-06-30 07:58:02,229 p=99523 u=gslab n=ansible | ok: [vc_test_new_dns]
+2021-06-30 07:58:02,239 p=99523 u=gslab n=ansible | TASK [dns_setup : Enable service httpd, and not touch the state] **********************************************************
+2021-06-30 07:58:08,669 p=99523 u=gslab n=ansible | ok: [vc_test_new_dns]
+2021-06-30 07:58:08,692 p=99523 u=gslab n=ansible | TASK [dns_setup : Restart DNS service (named) service for interface eth0] *************************************************
+2021-06-30 07:58:18,422 p=99523 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 07:58:18,432 p=99523 u=gslab n=ansible | TASK [dns_setup : Checking the status of the named service] ***************************************************************
+2021-06-30 07:58:21,464 p=99523 u=gslab n=ansible |  [ERROR]: User interrupted execution
+
+2021-06-30 08:14:49,284 p=108236 u=gslab n=ansible | PLAY [vc_test_new_dns] ****************************************************************************************************
+2021-06-30 08:14:49,307 p=108236 u=gslab n=ansible | TASK [Gathering Facts] ****************************************************************************************************
+2021-06-30 08:15:50,823 p=108236 u=gslab n=ansible | ok: [vc_test_new_dns]
+2021-06-30 08:15:50,831 p=108236 u=gslab n=ansible | TASK [dns_setup : Set a hostname] *****************************************************************************************
+2021-06-30 08:15:58,561 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:15:58,568 p=108236 u=gslab n=ansible | TASK [dns_setup : add lines] **********************************************************************************************
+2021-06-30 08:16:05,186 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns] => (item=IPADDR="10.136.59.196")
+2021-06-30 08:16:11,614 p=108236 u=gslab n=ansible | ok: [vc_test_new_dns] => (item=GATEWAY="10.136.0.1")
+2021-06-30 08:16:16,428 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns] => (item=NETMASK="255.255.255.0")
+2021-06-30 08:16:23,518 p=108236 u=gslab n=ansible | ok: [vc_test_new_dns] => (item=PEERDNS=no)
+2021-06-30 08:16:28,756 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns] => (item=DNS1="10.136.59.196")
+2021-06-30 08:16:35,570 p=108236 u=gslab n=ansible | ok: [vc_test_new_dns] => (item=DNS2="10.136.1.10")
+2021-06-30 08:16:41,107 p=108236 u=gslab n=ansible | ok: [vc_test_new_dns] => (item=DNS3="10.185.255.222")
+2021-06-30 08:16:41,155 p=108236 u=gslab n=ansible | TASK [dns_setup : Replace the dhcp to none /etc/sysconfig/network-scripts/ifcfg-ens192] ***********************************
+2021-06-30 08:16:47,014 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:16:47,023 p=108236 u=gslab n=ansible | TASK [dns_setup : Restarting Netwotk service] *****************************************************************************
+2021-06-30 08:16:54,847 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:16:54,861 p=108236 u=gslab n=ansible | TASK [dns_setup : Install all the packages] *******************************************************************************
+2021-06-30 08:17:42,752 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:17:42,761 p=108236 u=gslab n=ansible | TASK [dns_setup : Enable service httpd, and not touch the state] **********************************************************
+2021-06-30 08:17:50,869 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:17:50,881 p=108236 u=gslab n=ansible | TASK [dns_setup : Restart DNS service (named) service for interface eth0] *************************************************
+2021-06-30 08:17:59,468 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:17:59,483 p=108236 u=gslab n=ansible | TASK [dns_setup : Checking the status of the named service] ***************************************************************
+2021-06-30 08:18:06,557 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:18:06,569 p=108236 u=gslab n=ansible | TASK [dns_setup : debug] **************************************************************************************************
+2021-06-30 08:18:06,627 p=108236 u=gslab n=ansible | ok: [vc_test_new_dns] => {
+    "named_service_status": {
+        "changed": true,
+        "cmd": "systemctl status named",
+        "delta": "0:00:00.014926",
+        "end": "2021-06-30 08:18:04.924437",
+        "failed": false,
+        "rc": 0,
+        "start": "2021-06-30 08:18:04.909511",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "● named.service - Berkeley Internet Name Domain (DNS)\n   Loaded: loaded (/usr/lib/systemd/system/named.service; enabled; vendor preset: disabled)\n   Active: active (running) since Wed 2021-06-30 08:17:57 IST; 7s ago\n  Process: 51692 ExecStart=/usr/sbin/named -u named -c ${NAMEDCONF} $OPTIONS (code=exited, status=0/SUCCESS)\n  Process: 51689 ExecStartPre=/bin/bash -c if [ ! \"$DISABLE_ZONE_CHECKING\" == \"yes\" ]; then /usr/sbin/named-checkconf -z \"$NAMEDCONF\"; else echo \"Checking of zone files is disabled\"; fi (code=exited, status=0/SUCCESS)\n Main PID: 51694 (named)\n   CGroup: /system.slice/named.service\n           └─51694 /usr/sbin/named -u named -c /etc/named.conf\n\nJun 30 08:17:57 dns.ocp.local named[51694]: network unreachable resolving './DNSKEY/IN': 2001:7fe::53#53\nJun 30 08:17:57 dns.ocp.local named[51694]: network unreachable resolving './NS/IN': 2001:7fe::53#53\nJun 30 08:17:57 dns.ocp.local named[51694]: network unreachable resolving './DNSKEY/IN': 2001:500:200::b#53\nJun 30 08:17:57 dns.ocp.local named[51694]: network unreachable resolving './NS/IN': 2001:500:200::b#53\nJun 30 08:17:57 dns.ocp.local named[51694]: network unreachable resolving './DNSKEY/IN': 2001:7fd::1#53\nJun 30 08:17:57 dns.ocp.local named[51694]: network unreachable resolving './NS/IN': 2001:7fd::1#53\nJun 30 08:17:57 dns.ocp.local named[51694]: network unreachable resolving './DNSKEY/IN': 2001:dc3::35#53\nJun 30 08:17:57 dns.ocp.local named[51694]: network unreachable resolving './NS/IN': 2001:dc3::35#53\nJun 30 08:17:58 dns.ocp.local named[51694]: managed-keys-zone: Key 20326 for zone . acceptance timer complete: key now trusted\nJun 30 08:17:58 dns.ocp.local named[51694]: resolver priming query complete",
+        "stdout_lines": [
+            "● named.service - Berkeley Internet Name Domain (DNS)",
+            "   Loaded: loaded (/usr/lib/systemd/system/named.service; enabled; vendor preset: disabled)",
+            "   Active: active (running) since Wed 2021-06-30 08:17:57 IST; 7s ago",
+            "  Process: 51692 ExecStart=/usr/sbin/named -u named -c ${NAMEDCONF} $OPTIONS (code=exited, status=0/SUCCESS)",
+            "  Process: 51689 ExecStartPre=/bin/bash -c if [ ! \"$DISABLE_ZONE_CHECKING\" == \"yes\" ]; then /usr/sbin/named-checkconf -z \"$NAMEDCONF\"; else echo \"Checking of zone files is disabled\"; fi (code=exited, status=0/SUCCESS)",
+            " Main PID: 51694 (named)",
+            "   CGroup: /system.slice/named.service",
+            "           └─51694 /usr/sbin/named -u named -c /etc/named.conf",
+            "",
+            "Jun 30 08:17:57 dns.ocp.local named[51694]: network unreachable resolving './DNSKEY/IN': 2001:7fe::53#53",
+            "Jun 30 08:17:57 dns.ocp.local named[51694]: network unreachable resolving './NS/IN': 2001:7fe::53#53",
+            "Jun 30 08:17:57 dns.ocp.local named[51694]: network unreachable resolving './DNSKEY/IN': 2001:500:200::b#53",
+            "Jun 30 08:17:57 dns.ocp.local named[51694]: network unreachable resolving './NS/IN': 2001:500:200::b#53",
+            "Jun 30 08:17:57 dns.ocp.local named[51694]: network unreachable resolving './DNSKEY/IN': 2001:7fd::1#53",
+            "Jun 30 08:17:57 dns.ocp.local named[51694]: network unreachable resolving './NS/IN': 2001:7fd::1#53",
+            "Jun 30 08:17:57 dns.ocp.local named[51694]: network unreachable resolving './DNSKEY/IN': 2001:dc3::35#53",
+            "Jun 30 08:17:57 dns.ocp.local named[51694]: network unreachable resolving './NS/IN': 2001:dc3::35#53",
+            "Jun 30 08:17:58 dns.ocp.local named[51694]: managed-keys-zone: Key 20326 for zone . acceptance timer complete: key now trusted",
+            "Jun 30 08:17:58 dns.ocp.local named[51694]: resolver priming query complete"
+        ]
+    }
+}
+2021-06-30 08:18:06,642 p=108236 u=gslab n=ansible | TASK [dns_setup : Creating named.conf using Jinja2 template file] *********************************************************
+2021-06-30 08:18:19,516 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:18:19,526 p=108236 u=gslab n=ansible | TASK [dns_setup : Copying my_named.conf file to /etc/named/named.conf file] ***********************************************
+2021-06-30 08:18:27,327 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:18:27,336 p=108236 u=gslab n=ansible | TASK [dns_setup : Creating populated_dns_forward_file using Jinja2 template file] *****************************************
+2021-06-30 08:18:57,425 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:18:57,438 p=108236 u=gslab n=ansible | TASK [dns_setup : Copying dns_forward_file to /etc/named] *****************************************************************
+2021-06-30 08:19:18,561 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:19:18,578 p=108236 u=gslab n=ansible | TASK [dns_setup : Removing populated_dns_forward_file from the target machine] ********************************************
+2021-06-30 08:19:38,276 p=108236 u=gslab n=ansible | [WARNING]: Consider using the file module with state=absent rather than running 'rm'.  If you need to use command because
+file is insufficient you can add 'warn: false' to this command task or set 'command_warnings=False' in ansible.cfg to get
+rid of this message.
+
+2021-06-30 08:19:38,277 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:19:38,302 p=108236 u=gslab n=ansible | TASK [dns_setup : Creating populated_dns_reverse_file using Jinja2 template file] *****************************************
+2021-06-30 08:19:57,613 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:19:57,626 p=108236 u=gslab n=ansible | TASK [dns_setup : Copying populated_dns_reverse_file to /var/named/] ******************************************************
+2021-06-30 08:20:04,468 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:20:04,481 p=108236 u=gslab n=ansible | TASK [dns_setup : Removing populated_dns_reverse_file from the target machine] ********************************************
+2021-06-30 08:20:11,520 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:20:11,529 p=108236 u=gslab n=ansible | TASK [dns_setup : Restart DNS service (named) service] ********************************************************************
+2021-06-30 08:20:29,055 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:20:29,061 p=108236 u=gslab n=ansible | TASK [dns_setup : Inserting our namserver for DNS server in /etc/resolv.conf] *********************************************
+2021-06-30 08:20:35,596 p=108236 u=gslab n=ansible | ok: [vc_test_new_dns]
+2021-06-30 08:20:35,605 p=108236 u=gslab n=ansible | TASK [dns_setup : adding dns service to Public zone --> firewall-cmd  --add-service=dns --zone=public  --permanent] *******
+2021-06-30 08:20:42,657 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:20:42,667 p=108236 u=gslab n=ansible | TASK [dns_setup : permit traffic in default zone on port 53/udp] **********************************************************
+2021-06-30 08:20:48,633 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:20:48,639 p=108236 u=gslab n=ansible | TASK [dns_setup : permit traffic in default zone on port 53/tcp] **********************************************************
+2021-06-30 08:20:54,723 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:20:54,733 p=108236 u=gslab n=ansible | TASK [dns_setup : Checking DNS server using dig command] ******************************************************************
+2021-06-30 08:21:00,305 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:21:00,314 p=108236 u=gslab n=ansible | TASK [dns_setup : debug] **************************************************************************************************
+2021-06-30 08:21:00,367 p=108236 u=gslab n=ansible | ok: [vc_test_new_dns] => {
+    "dig_command_result": {
+        "changed": true,
+        "cmd": "dig +short -x 10.136.59.196",
+        "delta": "0:00:00.015719",
+        "end": "2021-06-30 08:20:58.644696",
+        "failed": false,
+        "rc": 0,
+        "start": "2021-06-30 08:20:58.628977",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "dns.gslab.ocp.local.\napi.gslab.ocp.local.\napi-int.gslab.ocp.local.",
+        "stdout_lines": [
+            "dns.gslab.ocp.local.",
+            "api.gslab.ocp.local.",
+            "api-int.gslab.ocp.local."
+        ]
+    }
+}
+2021-06-30 08:21:00,376 p=108236 u=gslab n=ansible | TASK [haproxy_setup : Creating named.conf using Jinja2 template file] *****************************************************
+2021-06-30 08:21:13,668 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:21:13,674 p=108236 u=gslab n=ansible | TASK [haproxy_setup : Install haproxy packages] ***************************************************************************
+2021-06-30 08:21:13,721 p=112146 u=gslab n=ansible | [DEPRECATION WARNING]: Invoking "yum" only once while using a loop via squash_actions is deprecated. Instead of using a 
+loop to supply multiple items and specifying `name: "{{ item }}"`, please use `name: ['haproxy']` and remove the loop. 
+This feature will be removed in version 2.11. Deprecation warnings can be disabled by setting deprecation_warnings=False 
+in ansible.cfg.
+2021-06-30 08:21:34,991 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns] => (item=['haproxy'])
+2021-06-30 08:21:35,000 p=108236 u=gslab n=ansible | TASK [haproxy_setup : Enable service haproxy service] *********************************************************************
+2021-06-30 08:21:43,383 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:21:43,398 p=108236 u=gslab n=ansible | TASK [haproxy_setup : adding haproxy service to Public zone --> firewall-cmd  --add-service=http --zone=public  --permanent] ***
+2021-06-30 08:21:50,075 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns] => (item=http)
+2021-06-30 08:21:56,945 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns] => (item=https)
+2021-06-30 08:21:56,958 p=108236 u=gslab n=ansible | TASK [haproxy_setup : permit traffic in default zone on ports] ************************************************************
+2021-06-30 08:22:03,884 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns] => (item=9000/tcp)
+2021-06-30 08:22:11,407 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns] => (item=6443/tcp)
+2021-06-30 08:22:18,534 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns] => (item=22623/tcp)
+2021-06-30 08:22:18,548 p=108236 u=gslab n=ansible | TASK [haproxy_setup : reload service firewalld] ***************************************************************************
+2021-06-30 08:22:27,030 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:22:27,037 p=108236 u=gslab n=ansible | TASK [haproxy_setup : Restart Haproxy service (haproxy) service] **********************************************************
+2021-06-30 08:22:34,293 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:22:34,300 p=108236 u=gslab n=ansible | TASK [haproxy_setup : debug] **********************************************************************************************
+2021-06-30 08:22:34,358 p=108236 u=gslab n=ansible | ok: [vc_test_new_dns] => {
+    "haproxy_service_status": {
+        "changed": true,
+        "failed": false,
+        "name": "haproxy",
+        "state": "started",
+        "status": {
+            "ActiveEnterTimestampMonotonic": "0",
+            "ActiveExitTimestampMonotonic": "0",
+            "ActiveState": "inactive",
+            "After": "syslog.target system.slice systemd-journald.socket network.target basic.target",
+            "AllowIsolate": "no",
+            "AmbientCapabilities": "0",
+            "AssertResult": "no",
+            "AssertTimestampMonotonic": "0",
+            "Before": "multi-user.target shutdown.target",
+            "BlockIOAccounting": "no",
+            "BlockIOWeight": "18446744073709551615",
+            "CPUAccounting": "no",
+            "CPUQuotaPerSecUSec": "infinity",
+            "CPUSchedulingPolicy": "0",
+            "CPUSchedulingPriority": "0",
+            "CPUSchedulingResetOnFork": "no",
+            "CPUShares": "18446744073709551615",
+            "CanIsolate": "no",
+            "CanReload": "yes",
+            "CanStart": "yes",
+            "CanStop": "yes",
+            "CapabilityBoundingSet": "18446744073709551615",
+            "CollectMode": "inactive",
+            "ConditionResult": "no",
+            "ConditionTimestampMonotonic": "0",
+            "Conflicts": "shutdown.target",
+            "ControlPID": "0",
+            "DefaultDependencies": "yes",
+            "Delegate": "no",
+            "Description": "HAProxy Load Balancer",
+            "DevicePolicy": "auto",
+            "EnvironmentFile": "/etc/sysconfig/haproxy (ignore_errors=no)",
+            "ExecMainCode": "0",
+            "ExecMainExitTimestampMonotonic": "0",
+            "ExecMainPID": "0",
+            "ExecMainStartTimestampMonotonic": "0",
+            "ExecMainStatus": "0",
+            "ExecReload": "{ path=/bin/kill ; argv[]=/bin/kill -USR2 $MAINPID ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }",
+            "ExecStart": "{ path=/usr/sbin/haproxy-systemd-wrapper ; argv[]=/usr/sbin/haproxy-systemd-wrapper -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid $OPTIONS ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }",
+            "FailureAction": "none",
+            "FileDescriptorStoreMax": "0",
+            "FragmentPath": "/usr/lib/systemd/system/haproxy.service",
+            "GuessMainPID": "yes",
+            "IOScheduling": "0",
+            "Id": "haproxy.service",
+            "IgnoreOnIsolate": "no",
+            "IgnoreOnSnapshot": "no",
+            "IgnoreSIGPIPE": "yes",
+            "InactiveEnterTimestampMonotonic": "0",
+            "InactiveExitTimestampMonotonic": "0",
+            "JobTimeoutAction": "none",
+            "JobTimeoutUSec": "0",
+            "KillMode": "mixed",
+            "KillSignal": "15",
+            "LimitAS": "18446744073709551615",
+            "LimitCORE": "18446744073709551615",
+            "LimitCPU": "18446744073709551615",
+            "LimitDATA": "18446744073709551615",
+            "LimitFSIZE": "18446744073709551615",
+            "LimitLOCKS": "18446744073709551615",
+            "LimitMEMLOCK": "65536",
+            "LimitMSGQUEUE": "819200",
+            "LimitNICE": "0",
+            "LimitNOFILE": "4096",
+            "LimitNPROC": "15632",
+            "LimitRSS": "18446744073709551615",
+            "LimitRTPRIO": "0",
+            "LimitRTTIME": "18446744073709551615",
+            "LimitSIGPENDING": "15632",
+            "LimitSTACK": "18446744073709551615",
+            "LoadState": "loaded",
+            "MainPID": "0",
+            "MemoryAccounting": "no",
+            "MemoryCurrent": "18446744073709551615",
+            "MemoryLimit": "18446744073709551615",
+            "MountFlags": "0",
+            "Names": "haproxy.service",
+            "NeedDaemonReload": "no",
+            "Nice": "0",
+            "NoNewPrivileges": "no",
+            "NonBlocking": "no",
+            "NotifyAccess": "none",
+            "OOMScoreAdjust": "0",
+            "OnFailureJobMode": "replace",
+            "PermissionsStartOnly": "no",
+            "PrivateDevices": "no",
+            "PrivateNetwork": "no",
+            "PrivateTmp": "no",
+            "ProtectHome": "no",
+            "ProtectSystem": "no",
+            "RefuseManualStart": "no",
+            "RefuseManualStop": "no",
+            "RemainAfterExit": "no",
+            "Requires": "system.slice basic.target",
+            "Restart": "no",
+            "RestartUSec": "100ms",
+            "Result": "success",
+            "RootDirectoryStartOnly": "no",
+            "RuntimeDirectoryMode": "0755",
+            "SameProcessGroup": "no",
+            "SecureBits": "0",
+            "SendSIGHUP": "no",
+            "SendSIGKILL": "yes",
+            "Slice": "system.slice",
+            "StandardError": "inherit",
+            "StandardInput": "null",
+            "StandardOutput": "journal",
+            "StartLimitAction": "none",
+            "StartLimitBurst": "5",
+            "StartLimitInterval": "10000000",
+            "StartupBlockIOWeight": "18446744073709551615",
+            "StartupCPUShares": "18446744073709551615",
+            "StatusErrno": "0",
+            "StopWhenUnneeded": "no",
+            "SubState": "dead",
+            "SyslogLevelPrefix": "yes",
+            "SyslogPriority": "30",
+            "SystemCallErrorNumber": "0",
+            "TTYReset": "no",
+            "TTYVHangup": "no",
+            "TTYVTDisallocate": "no",
+            "TasksAccounting": "no",
+            "TasksCurrent": "18446744073709551615",
+            "TasksMax": "18446744073709551615",
+            "TimeoutStartUSec": "1min 30s",
+            "TimeoutStopUSec": "1min 30s",
+            "TimerSlackNSec": "50000",
+            "Transient": "no",
+            "Type": "simple",
+            "UMask": "0022",
+            "UnitFilePreset": "disabled",
+            "UnitFileState": "enabled",
+            "WantedBy": "multi-user.target",
+            "WatchdogTimestampMonotonic": "0",
+            "WatchdogUSec": "0"
+        }
+    }
+}
+2021-06-30 08:22:34,371 p=108236 u=gslab n=ansible | TASK [haproxy_setup : Creating backup of original file of haproxy.cnf] ****************************************************
+2021-06-30 08:22:40,858 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:22:40,871 p=108236 u=gslab n=ansible | TASK [haproxy_setup : Copying populated_named.conf file content to haproxy.conf] ******************************************
+2021-06-30 08:22:47,109 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:22:47,119 p=108236 u=gslab n=ansible | TASK [haproxy_setup : Executing a command to fix haproxy service failed error] ********************************************
+2021-06-30 08:22:58,156 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:22:58,162 p=108236 u=gslab n=ansible | TASK [haproxy_setup : Restart Haproxy service (haproxy) service] **********************************************************
+2021-06-30 08:23:06,519 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:23:06,529 p=108236 u=gslab n=ansible | TASK [haproxy_setup : Removing populated_named.conf from the target machine] **********************************************
+2021-06-30 08:23:12,239 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:23:12,246 p=108236 u=gslab n=ansible | TASK [haproxy_setup : debug] **********************************************************************************************
+2021-06-30 08:23:12,303 p=108236 u=gslab n=ansible | ok: [vc_test_new_dns] => {
+    "haproxy_service_status": {
+        "changed": true,
+        "failed": false,
+        "name": "haproxy",
+        "state": "started",
+        "status": {
+            "ActiveEnterTimestamp": "Wed 2021-06-30 08:22:32 IST",
+            "ActiveEnterTimestampMonotonic": "1206015381",
+            "ActiveExitTimestampMonotonic": "0",
+            "ActiveState": "active",
+            "After": "syslog.target system.slice systemd-journald.socket network.target basic.target",
+            "AllowIsolate": "no",
+            "AmbientCapabilities": "0",
+            "AssertResult": "yes",
+            "AssertTimestamp": "Wed 2021-06-30 08:22:32 IST",
+            "AssertTimestampMonotonic": "1206013899",
+            "Before": "multi-user.target shutdown.target",
+            "BlockIOAccounting": "no",
+            "BlockIOWeight": "18446744073709551615",
+            "CPUAccounting": "no",
+            "CPUQuotaPerSecUSec": "infinity",
+            "CPUSchedulingPolicy": "0",
+            "CPUSchedulingPriority": "0",
+            "CPUSchedulingResetOnFork": "no",
+            "CPUShares": "18446744073709551615",
+            "CanIsolate": "no",
+            "CanReload": "yes",
+            "CanStart": "yes",
+            "CanStop": "yes",
+            "CapabilityBoundingSet": "18446744073709551615",
+            "CollectMode": "inactive",
+            "ConditionResult": "yes",
+            "ConditionTimestamp": "Wed 2021-06-30 08:22:32 IST",
+            "ConditionTimestampMonotonic": "1206013899",
+            "Conflicts": "shutdown.target",
+            "ControlGroup": "/system.slice/haproxy.service",
+            "ControlPID": "0",
+            "DefaultDependencies": "yes",
+            "Delegate": "no",
+            "Description": "HAProxy Load Balancer",
+            "DevicePolicy": "auto",
+            "EnvironmentFile": "/etc/sysconfig/haproxy (ignore_errors=no)",
+            "ExecMainCode": "0",
+            "ExecMainExitTimestampMonotonic": "0",
+            "ExecMainPID": "53841",
+            "ExecMainStartTimestamp": "Wed 2021-06-30 08:22:32 IST",
+            "ExecMainStartTimestampMonotonic": "1206015298",
+            "ExecMainStatus": "0",
+            "ExecReload": "{ path=/bin/kill ; argv[]=/bin/kill -USR2 $MAINPID ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }",
+            "ExecStart": "{ path=/usr/sbin/haproxy-systemd-wrapper ; argv[]=/usr/sbin/haproxy-systemd-wrapper -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid $OPTIONS ; ignore_errors=no ; start_time=[Wed 2021-06-30 08:22:32 IST] ; stop_time=[n/a] ; pid=53841 ; code=(null) ; status=0/0 }",
+            "FailureAction": "none",
+            "FileDescriptorStoreMax": "0",
+            "FragmentPath": "/usr/lib/systemd/system/haproxy.service",
+            "GuessMainPID": "yes",
+            "IOScheduling": "0",
+            "Id": "haproxy.service",
+            "IgnoreOnIsolate": "no",
+            "IgnoreOnSnapshot": "no",
+            "IgnoreSIGPIPE": "yes",
+            "InactiveEnterTimestampMonotonic": "0",
+            "InactiveExitTimestamp": "Wed 2021-06-30 08:22:32 IST",
+            "InactiveExitTimestampMonotonic": "1206015381",
+            "JobTimeoutAction": "none",
+            "JobTimeoutUSec": "0",
+            "KillMode": "mixed",
+            "KillSignal": "15",
+            "LimitAS": "18446744073709551615",
+            "LimitCORE": "18446744073709551615",
+            "LimitCPU": "18446744073709551615",
+            "LimitDATA": "18446744073709551615",
+            "LimitFSIZE": "18446744073709551615",
+            "LimitLOCKS": "18446744073709551615",
+            "LimitMEMLOCK": "65536",
+            "LimitMSGQUEUE": "819200",
+            "LimitNICE": "0",
+            "LimitNOFILE": "4096",
+            "LimitNPROC": "15632",
+            "LimitRSS": "18446744073709551615",
+            "LimitRTPRIO": "0",
+            "LimitRTTIME": "18446744073709551615",
+            "LimitSIGPENDING": "15632",
+            "LimitSTACK": "18446744073709551615",
+            "LoadState": "loaded",
+            "MainPID": "53841",
+            "MemoryAccounting": "no",
+            "MemoryCurrent": "18446744073709551615",
+            "MemoryLimit": "18446744073709551615",
+            "MountFlags": "0",
+            "Names": "haproxy.service",
+            "NeedDaemonReload": "no",
+            "Nice": "0",
+            "NoNewPrivileges": "no",
+            "NonBlocking": "no",
+            "NotifyAccess": "none",
+            "OOMScoreAdjust": "0",
+            "OnFailureJobMode": "replace",
+            "PermissionsStartOnly": "no",
+            "PrivateDevices": "no",
+            "PrivateNetwork": "no",
+            "PrivateTmp": "no",
+            "ProtectHome": "no",
+            "ProtectSystem": "no",
+            "RefuseManualStart": "no",
+            "RefuseManualStop": "no",
+            "RemainAfterExit": "no",
+            "Requires": "system.slice basic.target",
+            "Restart": "no",
+            "RestartUSec": "100ms",
+            "Result": "success",
+            "RootDirectoryStartOnly": "no",
+            "RuntimeDirectoryMode": "0755",
+            "SameProcessGroup": "no",
+            "SecureBits": "0",
+            "SendSIGHUP": "no",
+            "SendSIGKILL": "yes",
+            "Slice": "system.slice",
+            "StandardError": "inherit",
+            "StandardInput": "null",
+            "StandardOutput": "journal",
+            "StartLimitAction": "none",
+            "StartLimitBurst": "5",
+            "StartLimitInterval": "10000000",
+            "StartupBlockIOWeight": "18446744073709551615",
+            "StartupCPUShares": "18446744073709551615",
+            "StatusErrno": "0",
+            "StopWhenUnneeded": "no",
+            "SubState": "running",
+            "SyslogLevelPrefix": "yes",
+            "SyslogPriority": "30",
+            "SystemCallErrorNumber": "0",
+            "TTYReset": "no",
+            "TTYVHangup": "no",
+            "TTYVTDisallocate": "no",
+            "TasksAccounting": "no",
+            "TasksCurrent": "18446744073709551615",
+            "TasksMax": "18446744073709551615",
+            "TimeoutStartUSec": "1min 30s",
+            "TimeoutStopUSec": "1min 30s",
+            "TimerSlackNSec": "50000",
+            "Transient": "no",
+            "Type": "simple",
+            "UMask": "0022",
+            "UnitFilePreset": "disabled",
+            "UnitFileState": "enabled",
+            "WantedBy": "multi-user.target",
+            "WatchdogTimestamp": "Wed 2021-06-30 08:22:32 IST",
+            "WatchdogTimestampMonotonic": "1206015346",
+            "WatchdogUSec": "0"
+        }
+    }
+}
+2021-06-30 08:23:12,313 p=108236 u=gslab n=ansible | TASK [apache_setup : Installing Apache server] ****************************************************************************
+2021-06-30 08:23:20,119 p=108236 u=gslab n=ansible | ok: [vc_test_new_dns]
+2021-06-30 08:23:20,129 p=108236 u=gslab n=ansible | TASK [apache_setup : Replace the default] *********************************************************************************
+2021-06-30 08:23:25,447 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:23:25,485 p=108236 u=gslab n=ansible | TASK [apache_setup : Allow Apache to listen on tcp port 8081] *************************************************************
+2021-06-30 08:23:34,669 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:23:34,679 p=108236 u=gslab n=ansible | TASK [apache_setup : Set httpd_read_user_content flag on and keep it persistent across reboots] ***************************
+2021-06-30 08:23:41,749 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:23:41,765 p=108236 u=gslab n=ansible | TASK [apache_setup : Enable service httpd, and not touch the state] *******************************************************
+2021-06-30 08:23:49,166 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:23:49,177 p=108236 u=gslab n=ansible | TASK [apache_setup : Restart httpd service for interface eth0] ************************************************************
+2021-06-30 08:23:58,251 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:23:58,261 p=108236 u=gslab n=ansible | TASK [apache_setup : Checking the status of the named service] ************************************************************
+2021-06-30 08:24:06,166 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:24:06,175 p=108236 u=gslab n=ansible | TASK [apache_setup : debug] ***********************************************************************************************
+2021-06-30 08:24:06,196 p=108236 u=gslab n=ansible | ok: [vc_test_new_dns] => {
+    "httpd_status": {
+        "changed": true,
+        "cmd": "systemctl status httpd",
+        "delta": "0:00:00.012209",
+        "end": "2021-06-30 08:24:03.590764",
+        "failed": false,
+        "rc": 0,
+        "start": "2021-06-30 08:24:03.578555",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "● httpd.service - The Apache HTTP Server\n   Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; vendor preset: disabled)\n   Active: active (running) since Wed 2021-06-30 08:23:56 IST; 7s ago\n     Docs: man:httpd(8)\n           man:apachectl(8)\n Main PID: 54699 (httpd)\n   Status: \"Processing requests...\"\n   CGroup: /system.slice/httpd.service\n           ├─54699 /usr/sbin/httpd -DFOREGROUND\n           ├─54700 /usr/sbin/httpd -DFOREGROUND\n           ├─54701 /usr/sbin/httpd -DFOREGROUND\n           ├─54702 /usr/sbin/httpd -DFOREGROUND\n           ├─54703 /usr/sbin/httpd -DFOREGROUND\n           └─54704 /usr/sbin/httpd -DFOREGROUND\n\nJun 30 08:23:56 dns.ocp.local systemd[1]: Starting The Apache HTTP Server...\nJun 30 08:23:56 dns.ocp.local systemd[1]: Started The Apache HTTP Server.",
+        "stdout_lines": [
+            "● httpd.service - The Apache HTTP Server",
+            "   Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; vendor preset: disabled)",
+            "   Active: active (running) since Wed 2021-06-30 08:23:56 IST; 7s ago",
+            "     Docs: man:httpd(8)",
+            "           man:apachectl(8)",
+            " Main PID: 54699 (httpd)",
+            "   Status: \"Processing requests...\"",
+            "   CGroup: /system.slice/httpd.service",
+            "           ├─54699 /usr/sbin/httpd -DFOREGROUND",
+            "           ├─54700 /usr/sbin/httpd -DFOREGROUND",
+            "           ├─54701 /usr/sbin/httpd -DFOREGROUND",
+            "           ├─54702 /usr/sbin/httpd -DFOREGROUND",
+            "           ├─54703 /usr/sbin/httpd -DFOREGROUND",
+            "           └─54704 /usr/sbin/httpd -DFOREGROUND",
+            "",
+            "Jun 30 08:23:56 dns.ocp.local systemd[1]: Starting The Apache HTTP Server...",
+            "Jun 30 08:23:56 dns.ocp.local systemd[1]: Started The Apache HTTP Server."
+        ]
+    }
+}
+2021-06-30 08:24:06,208 p=108236 u=gslab n=ansible | TASK [apache_setup : permit traffic in default zone on port 8081/tcp] *****************************************************
+2021-06-30 08:24:13,292 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:24:13,312 p=108236 u=gslab n=ansible | TASK [apache_setup : Reloading firewalld service] *************************************************************************
+2021-06-30 08:24:20,801 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:24:20,810 p=108236 u=gslab n=ansible | PLAY [vc_test_new_dns] ****************************************************************************************************
+2021-06-30 08:24:20,828 p=108236 u=gslab n=ansible | TASK [Gathering Facts] ****************************************************************************************************
+2021-06-30 08:24:29,782 p=108236 u=gslab n=ansible | ok: [vc_test_new_dns]
+2021-06-30 08:24:29,791 p=108236 u=gslab n=ansible | TASK [intsall_ocp : Creating an SSH key that is configured for password-less authentication on your machine] **************
+2021-06-30 08:24:38,263 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:24:38,276 p=108236 u=gslab n=ansible | TASK [intsall_ocp : enable ssh-agent] *************************************************************************************
+2021-06-30 08:24:45,275 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:24:45,284 p=108236 u=gslab n=ansible | TASK [intsall_ocp : enable ssh-agent] *************************************************************************************
+2021-06-30 08:24:52,381 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:24:52,399 p=108236 u=gslab n=ansible | TASK [intsall_ocp : debug] ************************************************************************************************
+2021-06-30 08:24:52,432 p=108236 u=gslab n=ansible | ok: [vc_test_new_dns] => {
+    "ssh_agent_status": {
+        "changed": true,
+        "cmd": "eval $(ssh-agent);  ssh-add ~/.ssh/id_rsa",
+        "delta": "0:00:00.029617",
+        "end": "2021-06-30 08:24:50.027242",
+        "failed": false,
+        "rc": 0,
+        "start": "2021-06-30 08:24:49.997625",
+        "stderr": "Identity added: /root/.ssh/id_rsa (/root/.ssh/id_rsa)",
+        "stderr_lines": [
+            "Identity added: /root/.ssh/id_rsa (/root/.ssh/id_rsa)"
+        ],
+        "stdout": "Agent pid 55277",
+        "stdout_lines": [
+            "Agent pid 55277"
+        ]
+    }
+}
+2021-06-30 08:24:52,447 p=108236 u=gslab n=ansible | TASK [intsall_ocp : Creating a directory to store temp files] *************************************************************
+2021-06-30 08:24:59,731 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns] => (item=/OCP_files)
+2021-06-30 08:25:05,959 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns] => (item=/OCP_installation_directory)
+2021-06-30 08:25:05,968 p=108236 u=gslab n=ansible | TASK [intsall_ocp : Download openshit-install and oc-client binaries] *****************************************************
+2021-06-30 08:25:22,994 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns] => (item=https://mirror.openshift.com/pub/openshift-v4/clients/ocp/4.6.18/openshift-client-linux.tar.gz)
+2021-06-30 08:25:47,785 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns] => (item=https://mirror.openshift.com/pub/openshift-v4/clients/ocp/4.6.18/openshift-install-linux.tar.gz)
+2021-06-30 08:25:47,795 p=108236 u=gslab n=ansible | TASK [intsall_ocp : Unarchiving the files] ********************************************************************************
+2021-06-30 08:25:59,819 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:25:59,830 p=108236 u=gslab n=ansible | TASK [intsall_ocp : Executing openshift-install version command for testing] **********************************************
+2021-06-30 08:26:07,940 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:26:07,963 p=108236 u=gslab n=ansible | TASK [intsall_ocp : debug] ************************************************************************************************
+2021-06-30 08:26:08,025 p=108236 u=gslab n=ansible | ok: [vc_test_new_dns] => {
+    "openshift_install_version_status": {
+        "changed": true,
+        "cmd": "openshift-install version",
+        "delta": "0:00:00.129714",
+        "end": "2021-06-30 08:26:05.852051",
+        "failed": false,
+        "rc": 0,
+        "start": "2021-06-30 08:26:05.722337",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "openshift-install 4.6.18\nbuilt from commit 74b1d08f7f44c9c0d3f999c669a16fb2395e9551\nrelease image quay.io/openshift-release-dev/ocp-release@sha256:08ef16270e643a001454410b22864db6246d782298be267688a4433d83f404f4",
+        "stdout_lines": [
+            "openshift-install 4.6.18",
+            "built from commit 74b1d08f7f44c9c0d3f999c669a16fb2395e9551",
+            "release image quay.io/openshift-release-dev/ocp-release@sha256:08ef16270e643a001454410b22864db6246d782298be267688a4433d83f404f4"
+        ]
+    }
+}
+2021-06-30 08:26:08,050 p=108236 u=gslab n=ansible | TASK [intsall_ocp : cat ~/.ssh/id_rsa.pub] ********************************************************************************
+2021-06-30 08:26:14,126 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:26:14,133 p=108236 u=gslab n=ansible | TASK [intsall_ocp : debug] ************************************************************************************************
+2021-06-30 08:26:14,151 p=108236 u=gslab n=ansible | ok: [vc_test_new_dns] => {
+    "ssh_key_output": {
+        "changed": true,
+        "cmd": "cat ~/.ssh/id_rsa.pub",
+        "delta": "0:00:00.005338",
+        "end": "2021-06-30 08:26:12.401892",
+        "failed": false,
+        "rc": 0,
+        "start": "2021-06-30 08:26:12.396554",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDapDt8mMLjvFc1N7zU144cReBsAodlHmwlissXwzSkSrB0MThMrNW0ttDRHmCB4bY7riJR/qmXNtVadIRs8sFg5w9hj/eZIDMUUDycxRiyRTJ2RWtZ+Ny7P3iylKeOYz1Hmg/LATouVN13hO+B1rBxf9P+wF22yk2vm+6mqdv1rZ5Vni63q4eeJQpmWYcQ6jUTqujCyUaltgzuqwIGisL8kkvFFsxP6L92yIwk3FgI1R3073NhYyaBL1epm6llsAeOyjDTH/qF/ioAvLI+gQfNBke5sl2xrgYCC13way89Cl8zgRvLz8fzXAbfyvL8iLKlJoJhuZZMyLfB7i/7cqTmbX7NXuhF3On1eToq4UNZVrsZ+6eMqTuLpNeeAUUruYPPc1nzM4ARaYGGgeGEI21+N+jJTunwcX4G0PjOS6af21hSItdhAvsWXNeHhYLt1ildyW5CA179onfojQIH579yPz57abhPBr1OB20f/KhrKfNBp8FPdu+8nyLqsgabZOXGM2OvoMGOBvEXF6eYisQK0fTlpRfpGJaMvQLWaASNMaEjAlq8BZqxWjy29kG9wnbywgK+5J+wkTkzaJ1WwHew5m74gnWdXHHOefs/X+PwsRhBblCCEcQa4rJ6WdcFAvjkHeINc6agu93MANBY677h6Xs3GHTboQisPh5Y/vrRLw== root@dns.ocp.local",
+        "stdout_lines": [
+            "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDapDt8mMLjvFc1N7zU144cReBsAodlHmwlissXwzSkSrB0MThMrNW0ttDRHmCB4bY7riJR/qmXNtVadIRs8sFg5w9hj/eZIDMUUDycxRiyRTJ2RWtZ+Ny7P3iylKeOYz1Hmg/LATouVN13hO+B1rBxf9P+wF22yk2vm+6mqdv1rZ5Vni63q4eeJQpmWYcQ6jUTqujCyUaltgzuqwIGisL8kkvFFsxP6L92yIwk3FgI1R3073NhYyaBL1epm6llsAeOyjDTH/qF/ioAvLI+gQfNBke5sl2xrgYCC13way89Cl8zgRvLz8fzXAbfyvL8iLKlJoJhuZZMyLfB7i/7cqTmbX7NXuhF3On1eToq4UNZVrsZ+6eMqTuLpNeeAUUruYPPc1nzM4ARaYGGgeGEI21+N+jJTunwcX4G0PjOS6af21hSItdhAvsWXNeHhYLt1ildyW5CA179onfojQIH579yPz57abhPBr1OB20f/KhrKfNBp8FPdu+8nyLqsgabZOXGM2OvoMGOBvEXF6eYisQK0fTlpRfpGJaMvQLWaASNMaEjAlq8BZqxWjy29kG9wnbywgK+5J+wkTkzaJ1WwHew5m74gnWdXHHOefs/X+PwsRhBblCCEcQa4rJ6WdcFAvjkHeINc6agu93MANBY677h6Xs3GHTboQisPh5Y/vrRLw== root@dns.ocp.local"
+        ]
+    }
+}
+2021-06-30 08:26:14,162 p=108236 u=gslab n=ansible | TASK [intsall_ocp : Creating install-config.yaml using Jinja2 template file] **********************************************
+2021-06-30 08:26:28,355 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:26:28,365 p=108236 u=gslab n=ansible | TASK [intsall_ocp : Insert sshKey to the install-config.yaml file] ********************************************************
+2021-06-30 08:26:35,896 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:26:35,903 p=108236 u=gslab n=ansible | TASK [intsall_ocp : Copying install-config.yaml to /OCP_installation_directory] *******************************************
+2021-06-30 08:26:42,415 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:26:42,426 p=108236 u=gslab n=ansible | TASK [intsall_ocp : executing openshift-install create manifests command] *************************************************
+2021-06-30 08:26:52,709 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:26:52,729 p=108236 u=gslab n=ansible | TASK [intsall_ocp : Removing file] ****************************************************************************************
+2021-06-30 08:27:00,092 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:27:00,099 p=108236 u=gslab n=ansible | TASK [intsall_ocp : Replace the true with mastersSchedulable true to mastersSchedulable false in /OCP_installation_directory/manifests/cluster-scheduler-02-config.yml] ***
+2021-06-30 08:27:08,095 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:27:08,114 p=108236 u=gslab n=ansible | TASK [intsall_ocp : Obtain the Ignition config files] *********************************************************************
+2021-06-30 08:27:25,866 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:27:25,876 p=108236 u=gslab n=ansible | TASK [intsall_ocp : Creating append-bootstrap.ign using Jinja2 template file] *********************************************
+2021-06-30 08:27:39,534 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:27:39,543 p=108236 u=gslab n=ansible | TASK [intsall_ocp : Copying ignition files to the Apache server] **********************************************************
+2021-06-30 08:27:46,083 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns] => (item=/OCP_installation_directory/master.ign)
+2021-06-30 08:27:52,148 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns] => (item=/OCP_installation_directory/worker.ign)
+2021-06-30 08:27:59,043 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns] => (item=/OCP_installation_directory/bootstrap.ign)
+2021-06-30 08:28:06,111 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns] => (item=/OCP_installation_directory/append-bootstrap.ign)
+2021-06-30 08:28:06,130 p=108236 u=gslab n=ansible | TASK [intsall_ocp : Decode  master.ign into base64] ***********************************************************************
+2021-06-30 08:28:14,384 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:28:14,394 p=108236 u=gslab n=ansible | TASK [intsall_ocp : Decode  master.ign and worker.ign into base64] ********************************************************
+2021-06-30 08:28:20,155 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:28:20,164 p=108236 u=gslab n=ansible | TASK [intsall_ocp : Decode  append-bootstrap.ign into base64] *************************************************************
+2021-06-30 08:28:27,029 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:28:27,039 p=108236 u=gslab n=ansible | TASK [intsall_ocp : Cating master.64] *************************************************************************************
+2021-06-30 08:28:33,566 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:28:33,578 p=108236 u=gslab n=ansible | TASK [intsall_ocp : Cating worker.64] *************************************************************************************
+2021-06-30 08:28:39,764 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:28:39,773 p=108236 u=gslab n=ansible | TASK [intsall_ocp : Cating append-bootstrap.64] ***************************************************************************
+2021-06-30 08:28:46,678 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:28:46,688 p=108236 u=gslab n=ansible | TASK [intsall_ocp : Creating govc_commands.sh using Jinja2 template file] *************************************************
+2021-06-30 08:28:59,224 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:28:59,234 p=108236 u=gslab n=ansible | TASK [intsall_ocp : Install govc command line tool] ***********************************************************************
+2021-06-30 08:29:11,330 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:29:11,338 p=108236 u=gslab n=ansible | TASK [intsall_ocp : Unarchive govc_linux_amd64.gz file] *******************************************************************
+2021-06-30 08:29:17,339 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:29:17,349 p=108236 u=gslab n=ansible | TASK [intsall_ocp : renaming the govc] ************************************************************************************
+2021-06-30 08:29:25,172 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:29:25,182 p=108236 u=gslab n=ansible | TASK [intsall_ocp : Changing ownership, group and permissions of govc] ****************************************************
+2021-06-30 08:29:32,516 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:29:32,526 p=108236 u=gslab n=ansible | TASK [intsall_ocp : moving govc to /usr/local/bin] ************************************************************************
+2021-06-30 08:29:39,081 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:29:39,117 p=108236 u=gslab n=ansible | TASK [intsall_ocp : govc version] *****************************************************************************************
+2021-06-30 08:29:45,647 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:29:45,656 p=108236 u=gslab n=ansible | TASK [intsall_ocp : debug] ************************************************************************************************
+2021-06-30 08:29:45,678 p=108236 u=gslab n=ansible | ok: [vc_test_new_dns] => {
+    "govc_tool_status.stdout": "govc 0.20.0"
+}
+2021-06-30 08:29:45,688 p=108236 u=gslab n=ansible | TASK [intsall_ocp : Executing govc commands for bootstrap, masters and workers VM's] **************************************
+2021-06-30 08:30:38,381 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:30:38,407 p=108236 u=gslab n=ansible | TASK [intsall_ocp : debug] ************************************************************************************************
+2021-06-30 08:30:38,439 p=108236 u=gslab n=ansible | ok: [vc_test_new_dns] => {
+    "govc_commands_output.stdout_lines": [
+        "Successfully executed the govc command guestinfo.ignition.config.data.encoding=base64 for test-vc-ocp-bootstrap",
+        "Successfully executed the govc command disk.EnableUUID=TRUE for test-vc-ocp-bootstrap",
+        "Successfully executed the govc command guestinfo.ignition.config.data for test-vc-ocp-bootstrap",
+        "Successfully executed the export IPCFG command for test-vc-ocp-bootstrap",
+        "Successfully executed the govc command guestinfo.afterburn.initrd.network-kargs for test-vc-ocp-bootstrap",
+        "Powering on VirtualMachine:vm-2235... OK",
+        "Successfully powerd on  test-vc-ocp-bootstrap",
+        "Successfully executed the govc command guestinfo.ignition.config.data.encoding=base64 for test-vc-ocp-master-1",
+        "Successfully executed the govc command disk.EnableUUID=TRUE for test-vc-ocp-master-1",
+        "Successfully executed the govc command guestinfo.ignition.config.data for test-vc-ocp-master-1",
+        "Successfully executed the export IPCFG command for test-vc-ocp-master-1",
+        "Successfully executed the govc command guestinfo.afterburn.initrd.network-kargs for test-vc-ocp-master-1",
+        "Powering on VirtualMachine:vm-2230... OK",
+        "Successfully powerd on  test-vc-ocp-master-1",
+        "Successfully executed the govc command guestinfo.ignition.config.data.encoding=base64 for test-vc-ocp-master-2",
+        "Successfully executed the govc command disk.EnableUUID=TRUE for test-vc-ocp-master-2",
+        "Successfully executed the govc command guestinfo.ignition.config.data for test-vc-ocp-master-2",
+        "Successfully executed the export IPCFG command for test-vc-ocp-master-2",
+        "Successfully executed the govc command guestinfo.afterburn.initrd.network-kargs for test-vc-ocp-master-2",
+        "Powering on VirtualMachine:vm-2231... OK",
+        "Successfully powerd on  test-vc-ocp-master-2",
+        "Successfully executed the govc command guestinfo.ignition.config.data.encoding=base64 for test-vc-ocp-master-3",
+        "Successfully executed the govc command disk.EnableUUID=TRUE for test-vc-ocp-master-3",
+        "Successfully executed the govc command guestinfo.ignition.config.data for test-vc-ocp-master-3",
+        "Successfully executed the export IPCFG command for test-vc-ocp-master-3",
+        "Successfully executed the govc command guestinfo.afterburn.initrd.network-kargs for test-vc-ocp-master-3",
+        "Powering on VirtualMachine:vm-2232... OK",
+        "Successfully powerd on  test-vc-ocp-master-3",
+        "Successfully executed the govc command guestinfo.ignition.config.data.encoding=base64 for test-vc-ocp-worker-1",
+        "Successfully executed the govc command disk.EnableUUID=TRUE for test-vc-ocp-worker-1",
+        "Successfully executed the govc command guestinfo.ignition.config.data for test-vc-ocp-worker-1",
+        "Successfully executed the export IPCFG command for test-vc-ocp-worker-1",
+        "Successfully executed the govc command guestinfo.afterburn.initrd.network-kargs for test-vc-ocp-worker-1",
+        "Powering on VirtualMachine:vm-2233... OK",
+        "Successfully powerd on  test-vc-ocp-worker-1",
+        "Successfully executed the govc command guestinfo.ignition.config.data.encoding=base64 for test-vc-ocp-worker-2",
+        "Successfully executed the govc command disk.EnableUUID=TRUE for test-vc-ocp-worker-2",
+        "Successfully executed the govc command guestinfo.ignition.config.data for test-vc-ocp-worker-2",
+        "Successfully executed the export IPCFG command for test-vc-ocp-worker-2",
+        "Successfully executed the govc command guestinfo.afterburn.initrd.network-kargs for test-vc-ocp-worker-2",
+        "Powering on VirtualMachine:vm-2234... OK",
+        "Successfully powerd on  test-vc-ocp-worker-2"
+    ]
+}
+2021-06-30 08:30:38,455 p=108236 u=gslab n=ansible | TASK [intsall_ocp : Sleeping the playbook for 20 minutes so that bootstrap, worker and master Vm boots up properly] *******
+2021-06-30 08:50:44,757 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:50:44,779 p=108236 u=gslab n=ansible | TASK [intsall_ocp : checking Environment variables] ***********************************************************************
+2021-06-30 08:50:49,735 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:50:49,746 p=108236 u=gslab n=ansible | TASK [intsall_ocp : debug] ************************************************************************************************
+2021-06-30 08:50:49,773 p=108236 u=gslab n=ansible | ok: [vc_test_new_dns] => {
+    "KUBECONFIG_data.stdout_lines": [
+        "/OCP_installation_directory/auth/kubeconfig"
+    ]
+}
+2021-06-30 08:50:49,783 p=108236 u=gslab n=ansible | TASK [intsall_ocp : Executing oc whoami command] **************************************************************************
+2021-06-30 08:50:55,234 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:50:55,247 p=108236 u=gslab n=ansible | TASK [intsall_ocp : debug] ************************************************************************************************
+2021-06-30 08:50:55,274 p=108236 u=gslab n=ansible | ok: [vc_test_new_dns] => {
+    "oc_whoami_output.stdout_lines": [
+        "NAME                       STATUS   ROLES    AGE   VERSION",
+        "master-1.gslab.ocp.local   Ready    master   10m   v1.19.0+f173eb4",
+        "master-2.gslab.ocp.local   Ready    master   10m   v1.19.0+f173eb4",
+        "master-3.gslab.ocp.local   Ready    master   10m   v1.19.0+f173eb4"
+    ]
+}
+2021-06-30 08:50:55,289 p=108236 u=gslab n=ansible | TASK [intsall_ocp : Copying approve_csr.sh to /OCP_files] *****************************************************************
+2021-06-30 08:51:08,369 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:51:08,401 p=108236 u=gslab n=ansible | TASK [intsall_ocp : Approving the certificate signing requests for machines using shell script] ***************************
+2021-06-30 08:54:14,230 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:54:14,238 p=108236 u=gslab n=ansible | TASK [intsall_ocp : debug] ************************************************************************************************
+2021-06-30 08:54:14,260 p=108236 u=gslab n=ansible | ok: [vc_test_new_dns] => {
+    "csr_status.stdout_lines": [
+        "Approving all Pending csr",
+        "APPROVED all Pending csr",
+        "sleeped for 3m",
+        "Again approving newly generated Pending csr",
+        "certificatesigningrequest.certificates.k8s.io/csr-d76hp approved",
+        "certificatesigningrequest.certificates.k8s.io/csr-vmn4x approved",
+        "APPROVED all newly generated Pending csr"
+    ]
+}
+2021-06-30 08:54:14,269 p=108236 u=gslab n=ansible | TASK [intsall_ocp : Executing oc get nodes] *******************************************************************************
+2021-06-30 08:54:21,241 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:54:21,252 p=108236 u=gslab n=ansible | TASK [intsall_ocp : debug] ************************************************************************************************
+2021-06-30 08:54:21,275 p=108236 u=gslab n=ansible | ok: [vc_test_new_dns] => {
+    "oc_get_nodes_output.stdout_lines": [
+        "NAME                       STATUS     ROLES    AGE   VERSION",
+        "master-1.gslab.ocp.local   Ready      master   14m   v1.19.0+f173eb4",
+        "master-2.gslab.ocp.local   Ready      master   14m   v1.19.0+f173eb4",
+        "master-3.gslab.ocp.local   Ready      master   13m   v1.19.0+f173eb4",
+        "worker-1.gslab.ocp.local   NotReady   worker   2s    v1.19.0+f173eb4",
+        "worker-2.gslab.ocp.local   NotReady   worker   1s    v1.19.0+f173eb4"
+    ]
+}
+2021-06-30 08:54:21,281 p=108236 u=gslab n=ansible | TASK [intsall_ocp : Creating pvc.yaml using Jinja2 template file] *********************************************************
+2021-06-30 08:54:33,919 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:54:33,929 p=108236 u=gslab n=ansible | TASK [intsall_ocp : Creating the PersistentVolumeClaim Object from /OCP_files/pvc.yaml file] ******************************
+2021-06-30 08:54:39,568 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:54:39,579 p=108236 u=gslab n=ansible | TASK [intsall_ocp : Sleeping the playbook for 30s so that pvc gets bound] *************************************************
+2021-06-30 08:55:15,104 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:55:15,111 p=108236 u=gslab n=ansible | TASK [intsall_ocp : get pvc status] ***************************************************************************************
+2021-06-30 08:55:21,201 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:55:21,234 p=108236 u=gslab n=ansible | TASK [intsall_ocp : debug] ************************************************************************************************
+2021-06-30 08:55:21,282 p=108236 u=gslab n=ansible | ok: [vc_test_new_dns] => {
+    "pvc_bound_status.stdout_lines": [
+        "NAMESPACE                  NAME                                           STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE",
+        "openshift-image-registry   persistentvolumeclaim/image-registry-storage   Bound    pvc-f92531a9-2f5a-47fd-b945-c074b3630ade   100Gi      RWO            thin           41s",
+        "",
+        "NAMESPACE   NAME                                                        CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                                             STORAGECLASS   REASON   AGE",
+        "            persistentvolume/pvc-f92531a9-2f5a-47fd-b945-c074b3630ade   100Gi      RWO            Delete           Bound    openshift-image-registry/image-registry-storage   thin                    36s"
+    ]
+}
+2021-06-30 08:55:21,309 p=108236 u=gslab n=ansible | TASK [intsall_ocp : Changing managementState to Managed] ******************************************************************
+2021-06-30 08:55:30,713 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 08:55:30,755 p=108236 u=gslab n=ansible | TASK [intsall_ocp : Sleeping for 10m, getting components up and available] ************************************************
+2021-06-30 09:05:39,544 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 09:05:39,550 p=108236 u=gslab n=ansible | TASK [intsall_ocp : Executing openshift-install --dir=<installation_directory> wait-for install-complete command] *********
+2021-06-30 09:06:26,909 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 09:06:26,920 p=108236 u=gslab n=ansible | TASK [intsall_ocp : debug] ************************************************************************************************
+2021-06-30 09:06:26,945 p=108236 u=gslab n=ansible | ok: [vc_test_new_dns] => {
+    "final_status": {
+        "changed": true,
+        "cmd": "cd /OCP_installation_directory; openshift-install wait-for install-complete;",
+        "delta": "0:00:40.876856",
+        "end": "2021-06-30 09:06:25.325631",
+        "failed": false,
+        "rc": 0,
+        "start": "2021-06-30 09:05:44.448775",
+        "stderr": "level=info msg=\"Waiting up to 40m0s for the cluster at https://api.gslab.ocp.local:6443 to initialize...\"\nlevel=info msg=\"Waiting up to 10m0s for the openshift-console route to be created...\"\nlevel=info msg=\"Install complete!\"\nlevel=info msg=\"To access the cluster as the system:admin user when using 'oc', run 'export KUBECONFIG=/OCP_installation_directory/auth/kubeconfig'\"\nlevel=info msg=\"Access the OpenShift web-console here: https://console-openshift-console.apps.gslab.ocp.local\"\nlevel=info msg=\"Login to the console with user: \\\"kubeadmin\\\", and password: \\\"SpUZ4-fHt9X-dD4i8-Xxc8n\\\"\"\nlevel=info msg=\"Time elapsed: 40s\"",
+        "stderr_lines": [
+            "level=info msg=\"Waiting up to 40m0s for the cluster at https://api.gslab.ocp.local:6443 to initialize...\"",
+            "level=info msg=\"Waiting up to 10m0s for the openshift-console route to be created...\"",
+            "level=info msg=\"Install complete!\"",
+            "level=info msg=\"To access the cluster as the system:admin user when using 'oc', run 'export KUBECONFIG=/OCP_installation_directory/auth/kubeconfig'\"",
+            "level=info msg=\"Access the OpenShift web-console here: https://console-openshift-console.apps.gslab.ocp.local\"",
+            "level=info msg=\"Login to the console with user: \\\"kubeadmin\\\", and password: \\\"SpUZ4-fHt9X-dD4i8-Xxc8n\\\"\"",
+            "level=info msg=\"Time elapsed: 40s\""
+        ],
+        "stdout": "",
+        "stdout_lines": []
+    }
+}
+2021-06-30 09:06:26,959 p=108236 u=gslab n=ansible | TASK [post_installation : Executing  ccheck-nodes TASK] *******************************************************************
+2021-06-30 09:06:26,988 p=108236 u=gslab n=ansible | included: /home/gslab/Documents/GSLab_POC/OCP-Installation/Record_connected_installation_demo/ansible_roles_4_connected_OCP_install/post_installation/tasks/check-nodes.yml for vc_test_new_dns
+2021-06-30 09:06:26,996 p=108236 u=gslab n=ansible | TASK [post_installation : Get All Nodes] **********************************************************************************
+2021-06-30 09:06:33,731 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 09:06:33,741 p=108236 u=gslab n=ansible | TASK [post_installation : debug] ******************************************************************************************
+2021-06-30 09:06:33,767 p=108236 u=gslab n=ansible | ok: [vc_test_new_dns] => {
+    "nodes.stdout_lines": [
+        "NAME                       STATUS   ROLES    AGE   VERSION",
+        "master-1.gslab.ocp.local   Ready    master   26m   v1.19.0+f173eb4",
+        "master-2.gslab.ocp.local   Ready    master   26m   v1.19.0+f173eb4",
+        "master-3.gslab.ocp.local   Ready    master   26m   v1.19.0+f173eb4",
+        "worker-1.gslab.ocp.local   Ready    worker   12m   v1.19.0+f173eb4",
+        "worker-2.gslab.ocp.local   Ready    worker   12m   v1.19.0+f173eb4"
+    ]
+}
+2021-06-30 09:06:33,778 p=108236 u=gslab n=ansible | TASK [post_installation : Checking whether Cluster is Up and Running] *****************************************************
+2021-06-30 09:06:33,805 p=108236 u=gslab n=ansible | ok: [vc_test_new_dns] => {
+    "msg": "Yes Cluster is Up and Running ....."
+}
+2021-06-30 09:06:33,815 p=108236 u=gslab n=ansible | TASK [post_installation : fail] *******************************************************************************************
+2021-06-30 09:06:33,832 p=108236 u=gslab n=ansible | skipping: [vc_test_new_dns]
+2021-06-30 09:06:33,850 p=108236 u=gslab n=ansible | TASK [post_installation : Executing  check-components TASK] ***************************************************************
+2021-06-30 09:06:33,876 p=108236 u=gslab n=ansible | included: /home/gslab/Documents/GSLab_POC/OCP-Installation/Record_connected_installation_demo/ansible_roles_4_connected_OCP_install/post_installation/tasks/check-components.yml for vc_test_new_dns
+2021-06-30 09:06:33,887 p=108236 u=gslab n=ansible | TASK [post_installation : Get All Components] *****************************************************************************
+2021-06-30 09:06:39,752 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 09:06:39,765 p=108236 u=gslab n=ansible | TASK [post_installation : debug] ******************************************************************************************
+2021-06-30 09:06:39,790 p=108236 u=gslab n=ansible | ok: [vc_test_new_dns] => {
+    "components.stdout_lines": [
+        "AVAILABLE",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True",
+        "True"
+    ]
+}
+2021-06-30 09:06:39,801 p=108236 u=gslab n=ansible | TASK [post_installation : Checking whether Components are Up and Running] *************************************************
+2021-06-30 09:06:39,828 p=108236 u=gslab n=ansible | ok: [vc_test_new_dns] => {
+    "msg": "All Components are Up and Running ....."
+}
+2021-06-30 09:06:39,837 p=108236 u=gslab n=ansible | TASK [post_installation : fail] *******************************************************************************************
+2021-06-30 09:06:39,855 p=108236 u=gslab n=ansible | skipping: [vc_test_new_dns]
+2021-06-30 09:06:39,866 p=108236 u=gslab n=ansible | TASK [post_installation : Executing  check-deployment TASK] ***************************************************************
+2021-06-30 09:06:39,895 p=108236 u=gslab n=ansible | included: /home/gslab/Documents/GSLab_POC/OCP-Installation/Record_connected_installation_demo/ansible_roles_4_connected_OCP_install/post_installation/tasks/check-deployment.yml for vc_test_new_dns
+2021-06-30 09:06:39,908 p=108236 u=gslab n=ansible | TASK [post_installation : Moving Deployment file to the OCP_files] ********************************************************
+2021-06-30 09:06:56,308 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 09:06:56,318 p=108236 u=gslab n=ansible | TASK [post_installation : Cating Deployment file] *************************************************************************
+2021-06-30 09:07:01,727 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 09:07:01,747 p=108236 u=gslab n=ansible | TASK [post_installation : debug] ******************************************************************************************
+2021-06-30 09:07:01,777 p=108236 u=gslab n=ansible | ok: [vc_test_new_dns] => {
+    "deployment_file.stdout_lines": [
+        "apiVersion: v1",
+        "kind: Service",
+        "metadata:",
+        "  name: ocp-deployment-service",
+        "  namespace: default",
+        "  labels:",
+        "    app: ocp-deployment",
+        "spec:",
+        "  type: NodePort",
+        "  ports:",
+        "    - nodePort: 31325",
+        "      port: 5050",
+        "      protocol: TCP",
+        "      targetPort: 5050",
+        "  selector:",
+        "    app: ocp-deployment-container",
+        "---",
+        "apiVersion: apps/v1",
+        "kind: Deployment",
+        "metadata:",
+        "  name: ocp-deployment",
+        "  namespace: default",
+        "spec:",
+        "  selector:",
+        "    matchLabels:",
+        "      app: ocp-deployment-container",
+        "  replicas: 1",
+        "  template:",
+        "    metadata:",
+        "      labels:",
+        "        app: ocp-deployment-container",
+        "    spec:",
+        "      containers:",
+        "      - name: ocp-deployment",
+        "        image: r4rajat/test-ocp-deployment",
+        "        stdin: true",
+        "        tty: true",
+        "        ports:",
+        "          - containerPort: 5050"
+    ]
+}
+2021-06-30 09:07:01,789 p=108236 u=gslab n=ansible | TASK [post_installation : Deploying Sample Flask Application with Service type as NodePort] *******************************
+2021-06-30 09:07:08,283 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 09:07:08,311 p=108236 u=gslab n=ansible | TASK [post_installation : Sleeping for 2m for deployment to settle] *******************************************************
+2021-06-30 09:09:14,147 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 09:09:14,159 p=108236 u=gslab n=ansible | TASK [post_installation : Checking whether getting appropriate Output] ****************************************************
+2021-06-30 09:09:19,209 p=108236 u=gslab n=ansible | [WARNING]: Consider using the get_url or uri module rather than running 'curl'.  If you need to use command because
+get_url or uri is insufficient you can add 'warn: false' to this command task or set 'command_warnings=False' in
+ansible.cfg to get rid of this message.
+
+2021-06-30 09:09:19,209 p=108236 u=gslab n=ansible | changed: [vc_test_new_dns]
+2021-06-30 09:09:19,223 p=108236 u=gslab n=ansible | TASK [post_installation : debug] ******************************************************************************************
+2021-06-30 09:09:19,248 p=108236 u=gslab n=ansible | ok: [vc_test_new_dns] => {
+    "response.stdout_lines": [
+        "{\"Message\": \"NodePort Deployment Working !!\", \"Status Code\": 200}"
+    ]
+}
+2021-06-30 09:09:19,250 p=108236 u=gslab n=ansible | PLAY RECAP ****************************************************************************************************************
+2021-06-30 09:09:19,253 p=108236 u=gslab n=ansible | vc_test_new_dns            : ok=121  changed=92   unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   

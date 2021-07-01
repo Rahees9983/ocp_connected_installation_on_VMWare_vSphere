@@ -1,0 +1,65 @@
+---
+# tasks file for TestApache
+# Installing Apache server 
+- name: Installing Apache server
+  yum:
+    name: [ 'httpd' ]
+    state: present
+    update_cache: True
+
+- name: Replace the default
+  replace:
+    path:  /etc/httpd/conf/httpd.conf
+    regexp: 'Listen 80'
+    replace: 'Listen {{ apache_port }}'
+    backup: yes
+
+# To use the below module install $ ansible-galaxy collection install community.general
+# This task will Apache port on selinux 
+- name: Allow Apache to listen on tcp port {{ apache_port }}
+  community.general.seport:
+    ports: '{{ apache_port }}'
+    proto: tcp
+    setype: http_port_t 
+    state: present
+
+# To use  this module install $ ansible-galaxy collection install ansible.posix
+# this task will set httpd_read_user_content to 1 
+- name: Set httpd_read_user_content flag on and keep it persistent across reboots
+  ansible.posix.seboolean:
+    name: httpd_read_user_content
+    state: yes
+    persistent: yes
+    
+
+# Below task will enable the httpd service 
+- name: Enable service httpd, and not touch the state
+  ansible.builtin.service:
+    name: httpd
+    enabled: yes
+
+# Below task will restart the httpd service
+- name: Restart httpd service for interface eth0
+  ansible.builtin.service:
+    name: httpd
+    state: started
+
+# Beow below task will check the current status of the httpd service 
+- name: Checking the status of the named service
+  shell: systemctl status httpd
+  register: httpd_status
+
+# Below task will show the 
+- debug:
+    var: httpd_status
+
+# Permit traffic in default zone on port {{ apache_port }}/tcp
+- name: permit traffic in default zone on port {{ apache_port }}/tcp
+  ansible.posix.firewalld:
+    port: "{{ apache_port }}/tcp"
+    permanent: yes
+    state: enabled
+
+# Reloading firewalld service
+- name: Reloading firewalld service
+  shell: firewall-cmd --reload

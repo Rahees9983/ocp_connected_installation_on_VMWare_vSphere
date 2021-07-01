@@ -1,0 +1,81 @@
+global
+   log /dev/log local0
+   log /dev/log local1 notice
+   chroot /var/lib/haproxy
+   stats timeout 30s
+   user haproxy
+   group haproxy
+   daemon
+   stats socket /var/lib/haproxy/stats
+
+defaults
+   log global
+   mode http
+   option httplog
+   option dontlognull
+   timeout connect 5000
+   timeout client 50000
+   timeout server 50000
+
+listen stats
+   bind *:{{ haproxy_listen_port }}
+   mode http
+   stats enable
+   stats uri /
+   monitor-uri /healthz
+frontend openshift-api-server-front
+   bind *:6443
+   default_backend openshift-api-server-backend
+   mode tcp
+   option tcplog
+
+backend openshift-api-server-backend
+   balance source
+   mode tcp
+   {% for k_hostname, v_host_IP in bootstrap.items() %}
+server bootstrap {{ v_host_IP -}}:6443 check
+   {% endfor %}
+   {%- for k_hostname, v_host_IP in masters.items() %}
+server master{{ loop.index }} {{ v_host_IP }}:6443 check
+   {% endfor %}
+
+frontend machine-config-server
+   bind *:22623
+   default_backend machine-config-server-backend
+   mode tcp
+   option tcplog
+
+backend machine-config-server-backend
+   balance source
+   mode tcp
+   {% for k_hostname, v_host_IP in bootstrap.items() %}
+server bootstrap {{ v_host_IP }}:22623 check
+   {% endfor %}
+   {%- for k_hostname, v_host_IP in masters.items() %}
+server master{{ loop.index }} {{ v_host_IP }}:22623 check
+   {% endfor %}
+
+frontend ingress-http
+   bind *:80
+   default_backend ingress-http-backend
+   mode tcp
+   option tcplog
+
+backend ingress-http-backend
+   balance source
+   mode tcp
+   {% for k_hostname, v_host_IP in workers.items() %}
+server worker{{ loop.index }} {{ v_host_IP }}:80 check
+   {% endfor %}
+
+frontend ingress-https
+   bind *:443
+   default_backend ingress-https-backend
+   mode tcp
+   option tcplog
+backend ingress-https-backend
+   balance source
+   mode tcp
+   {% for k_hostname, v_host_IP in workers.items() %}
+server worker{{ loop.index }} {{ v_host_IP }}:443 check
+   {% endfor %}

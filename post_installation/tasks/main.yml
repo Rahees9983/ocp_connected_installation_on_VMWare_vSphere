@@ -1,0 +1,17 @@
+---
+# tasks file for roles/post_installation
+- name: Executing  ccheck-nodes TASK 
+  include_tasks: check-nodes.yml
+
+- name:  Executing  check-components TASK 
+  include_tasks: check-components.yml
+
+- name: Executing  check-deployment TASK 
+  include_tasks: check-deployment.yml
+
+
+# - include_tasks: check-nodes.yml
+
+# - include_tasks: check-components.yml
+
+# - include_tasks: check-deployment.yml

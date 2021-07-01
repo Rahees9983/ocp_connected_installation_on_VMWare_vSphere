@@ -1,0 +1,29 @@
+---
+# allow_query: "10.136.57.0/24"
+set_dns_hostname: "dns.ocp.local"
+dns_hostname: "dns.ocp.local."
+allow_query: "any"
+reverse_last_3_ip_sets:
+  - "56.136.10"
+  - "59.136.10"
+
+DNS2_value: "10.136.1.10"
+DNS3_value: "10.185.255.222"
+GATEWAY_value: "10.136.0.1"
+NETMASK_value: "255.255.255.0"
+
+network_adapter_name: "ens192"
+cluster_name_and_domain_name: gslab.ocp.local.
+domain_name: "ocp.local."
+dns_ip_address: "10.136.59.196"
+haproxy_ip_address: "10.136.59.196"
+bootstrap_ip_address: "10.136.56.36"
+
+masters_ip_list:
+  - "10.136.56.31"
+  - "10.136.56.32"
+  - "10.136.56.33"
+
+workers_ip_list:
+  - "10.136.56.34"
+  - "10.136.56.35"

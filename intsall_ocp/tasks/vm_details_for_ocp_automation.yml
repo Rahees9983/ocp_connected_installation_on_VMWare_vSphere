@@ -1,0 +1,30 @@
+ host vc-ocp-test-master-1{
+       hardware ethernet     00:50:56:a4:bb:ba;
+ }
+ 
+ host vc-ocp-test-master-2 {
+       hardware ethernet       00:50:56:a4:ab:55;
+ }
+ 
+ host vc-ocp-test-master-3 {
+       hardware ethernet       00:50:56:a4:a7:b5;
+ }
+
+ host vc-ocp-test-worker-1 {
+       hardware ethernet       00:50:56:a4:a3:20;
+ }
+ host vc-ocp-test-worker-2 {
+       hardware ethernet       00:50:56:a4:0f:40;
+ }
+
+ host vc-ocp-test-bootstrap {
+       hardware ethernet       00:50:56:a4:be:89;
+ }
+
+ host vc-ocp-test-haproxy {
+       hardware ethernet       00:50:56:a4:9e:6a;
+ }
+
+ host vc-ocp-test-dns {
+       hardware ethernet       00:50:56:a4:92:74;
+ }

@@ -1,0 +1,18 @@
+---
+# This task will check the Readiness of the OCP Nodes
+  - name: Get All Nodes
+    command: oc get nodes
+    register: nodes
+
+  - debug:
+      var=nodes.stdout_lines 
+ 
+  - name: Checking whether Cluster is Up and Running
+    when : nodes.stdout | regex_search('master')
+    debug:
+      msg: Yes Cluster is Up and Running .....
+
+  - name:
+    fail:
+      msg: "Your Cluster is NOT Running, Kindly Check the Error ....."
+    when: '"NotReady" in nodes.stdout'
